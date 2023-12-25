@@ -11,16 +11,22 @@ program
   .command('dev')
   .action(async () => {
     await execa('remix', ['vite:dev'], {
-        cwd: resolve(__dirname, '..')
-    }).pipeStdout(process.stdout);
+        cwd: resolve(__dirname, '..'),
+        env: {
+          ORIGINAL_CWD: process.cwd()
+        }
+    }).pipeStdout(process.stdout).pipeStderr(process.stderr);
   });
 
 program
   .command('build')
   .action(async () => {
     await execa('remix', ['vite:build'], {
-        cwd: resolve(__dirname, '..')
-    })
+        cwd: resolve(__dirname, '..'),
+        env: {
+          ORIGINAL_CWD: process.cwd()
+        }
+    }).pipeStdout(process.stdout).pipeStderr(process.stderr);
   });
 
 program.parse();

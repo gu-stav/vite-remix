@@ -6,6 +6,11 @@
   "bin": {
     "studio": "./src/cli.js"
   },
+  "exports": {
+    "./config": {
+      "import": "./src/exports/config.js"
+    }
+  },
   "scripts": {
     "build": "vite build && vite build --ssr",
     "dev": "vite dev",

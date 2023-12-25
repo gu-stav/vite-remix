@@ -10,6 +10,9 @@ importers:
 
   apps/dev:
     dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
       unding-studio-remix:
         specifier: workspace:*
         version: link:../../packages/studio

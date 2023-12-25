@@ -7,6 +7,10 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import config from '~studio.config.js';
+
+console.log('Config', config);
+
 export default function App() {
   return (
     <html lang="en">
