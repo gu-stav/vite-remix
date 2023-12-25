@@ -3,10 +3,8 @@
   "version": "0.0.1",
   "sideEffects": false,
   "type": "module",
-  "exports": {
-    "./vite": {
-      "import": "./src/exports/vite.js"
-    }
+  "bin": {
+    "studio": "./src/cli.js"
   },
   "scripts": {
     "build": "vite build && vite build --ssr",
@@ -15,16 +13,18 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@remix-run/node": "^2.3.0",
-    "@remix-run/react": "^2.3.0",
-    "@remix-run/serve": "^2.3.0",
+    "@remix-run/node": "^2.4.1",
+    "@remix-run/react": "^2.4.1",
+    "@remix-run/serve": "^2.4.1",
+    "commander": "^11.1.0",
+    "execa": "^8.0.1",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.3.0",
-    "@remix-run/eslint-config": "^2.3.0",
+    "@remix-run/dev": "^2.4.1",
+    "@remix-run/eslint-config": "^2.4.1",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "eslint": "^8.38.0",

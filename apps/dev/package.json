@@ -5,15 +5,15 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "vite build && vite build --ssr",
-    "dev": "vite dev"
+    "build": "studio build",
+    "dev": "studio dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "unding-studio-remix": "workspace:*",
-    "vite": "^5.0.0"
+    "@remix-run/dev": "^2.4.1",
+    "unding-studio-remix": "workspace:*"
   }
 }
