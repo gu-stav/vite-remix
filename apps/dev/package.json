@@ -13,7 +13,6 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@remix-run/dev": "^2.4.1",
     "unding-studio-remix": "workspace:*"
   }
 }
