@@ -1,5 +1,5 @@
 import { redirect } from "@remix-run/node";
 
 export function loader() {
-  throw redirect('/admin');
+    throw redirect('/auth/login');
 }
