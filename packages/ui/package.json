@@ -2,14 +2,30 @@
   "name": "ui",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "storybook dev -p 6006 --no-open",
-    "build-storybook": "storybook build"
+    "build": "vite build",
+    "build:storybook": "storybook build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Gustav Hansen <gu@stav.dev>",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.6",
     "@storybook/addon-interactions": "^7.6.6",
@@ -25,6 +41,8 @@
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.14.0",
-    "@vanilla-extract/vite-plugin": "^3.9.3"
+    "@vanilla-extract/vite-plugin": "^3.9.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite-plugin-dts": "^3.7.0"
   }
 }
