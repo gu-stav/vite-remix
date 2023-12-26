@@ -3,7 +3,9 @@
     "private": true,
     "sideEffects": false,
     "type": "module",
-    "scripts": {},
+    "scripts": {
+        "dev": "pnpm run --if-present --parallel -r dev"
+    },
     "engines": {
         "node": ">=18.0.0"
     }
