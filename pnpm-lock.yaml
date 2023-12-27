@@ -45,6 +45,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      ui:
+        specifier: workspace:^
+        version: link:../ui
     devDependencies:
       '@remix-run/dev':
         specifier: ^2.4.1

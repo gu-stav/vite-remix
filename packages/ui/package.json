@@ -11,15 +11,13 @@
   "license": "MIT",
   "sideEffects": false,
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/ui.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "default": "./dist/index.js"
+      "import": "./dist/ui.mjs"
     },
     "./*": "./dist/*"
   },

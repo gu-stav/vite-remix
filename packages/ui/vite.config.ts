@@ -5,14 +5,11 @@ import react from '@vitejs/plugin-react';
 export default {
   build: {
     lib: {
-      entry: {},
-      formats: ['cjs', 'es'],
+      entry: './src/index.ts',
+      formats: ['es'],
     },
     rollupOptions: {
-      external: (id) => !id.startsWith('.') && !id.startsWith('/'),
-      input: [
-        './src/index.ts'
-      ]
+      external: ['react', 'react/jsx-runtime'],
     },
     target: 'esnext',
   },

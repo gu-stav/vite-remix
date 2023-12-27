@@ -11,6 +11,8 @@ import config from '~studio.config.js';
 
 console.log('Config', config);
 
+import "ui/style.css";
+
 export default function App() {
   return (
     <html lang="en">
