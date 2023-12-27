@@ -12,7 +12,6 @@
     }
   },
   "scripts": {
-    "dev": "remix vite:dev",
     "typecheck": "tsc"
   },
   "dependencies": {
