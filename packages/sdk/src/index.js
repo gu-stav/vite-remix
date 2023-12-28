@@ -3,7 +3,12 @@ import pino from 'pino';
 class SDK {
     async init(config) {
         this.config = config;
-        this.db = null;
+
+        if (!config?.db) {
+            throw new Error('You must provide a database adapter.');
+        }
+
+        this.db = this.config.db({ sdk: this });
         this.logger = pino();
     };
 

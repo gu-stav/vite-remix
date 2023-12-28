@@ -3,9 +3,9 @@ import { Button, InputText } from "ui";
 import sdk from 'sdk';
 
 export async function loader({ params, request }) {
-    console.log({ params, url: request.urlList })
+    const { default: config } = await import('~studio.config.js');
 
-    await sdk.init();
+    await sdk.init(config);
     const data = await sdk.find();
 
     return { data };
