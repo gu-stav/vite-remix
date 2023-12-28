@@ -1,4 +1,3 @@
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import dts from 'vite-plugin-dts';
 import react from '@vitejs/plugin-react';
 
@@ -14,5 +13,5 @@ export default {
     target: 'esnext',
   },
 
-  plugins: [vanillaExtractPlugin(), react(), dts()]
+  plugins: [react(), dts()]
 };
