@@ -12,19 +12,29 @@ class SDK {
         this.logger = pino();
     };
 
-    create() {};
-    
-    update() {};
+    async create() {
+        const doc = await this.db.create();
+    };
 
-    find() {
+    async update() {
+        const doc = await this.db.update();
+    };
+
+    async find() {
         this.logger.info('This is a logger message from find');
+
+        const doc = await this.db.find();
 
         return [{ id: 1, title: 'Hello' }];
     };
     
-    findById() {};
-    
-    del() {};
+    async findById() {
+        const doc = await this.db.find();
+    };
+
+    async delete() {
+        const doc = await this.db.delete();
+    };
 }
 
 export default new SDK();

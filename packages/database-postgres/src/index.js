@@ -4,8 +4,16 @@ import postgres from 'postgres';
 export default function setupDbAdapter(config) {
     const { connectionString } = config;
     const client = postgres(connectionString);
+    const drizzleClient = drizzle(client);
 
     return ({ sdk }) => {
-        return drizzle(client);
+        return {
+            async create() {},
+            async find() {
+                return drizzleClient.select();
+            },
+            async update() {},
+            async delete() {}
+        };
     };
 }
