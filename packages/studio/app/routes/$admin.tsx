@@ -1,5 +1,5 @@
 import { Outlet } from "@remix-run/react";
-import { Flex } from "ui";
+import { Button, InputText } from "ui";
 
 export function loader({ params, request }) {
     console.log({ params, url: request.urlList })
@@ -11,11 +11,10 @@ export default function AdminLayout() {
     return <>
         <h1>ADMIN</h1>
 
-        <Flex>
-            adasds
-            <button>text</button>
-            <button>text</button>
-        </Flex>
+        <Button>text</Button>
+        <Button>text</Button>
+
+        <InputText />
 
         <Outlet />
     </>

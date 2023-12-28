@@ -13,6 +13,7 @@
   "main": "./dist/index.js",
   "module": "./dist/ui.mjs",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -38,8 +39,6 @@
     "storybook": "^7.6.6"
   },
   "dependencies": {
-    "@vanilla-extract/css": "^1.14.0",
-    "@vanilla-extract/vite-plugin": "^3.9.3",
     "@vitejs/plugin-react": "^4.2.1",
     "clsx": "^2.0.0",
     "vite-plugin-dts": "^3.7.0"
