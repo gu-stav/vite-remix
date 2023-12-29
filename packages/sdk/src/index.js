@@ -3,7 +3,7 @@ import pino from 'pino';
 import { validate } from './config/validate';
 
 class SDK {
-    async init(config) {
+    init(config) {
         try {
             validate(config);
         } catch(error) {

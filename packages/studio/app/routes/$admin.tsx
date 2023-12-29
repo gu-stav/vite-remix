@@ -5,7 +5,8 @@ import { sdk } from 'sdk';
 export async function loader({ params, request }) {
     const { default: config } = await import('~studio.config.js');
 
-    await sdk.init(config);
+    sdk.init(config);
+    
     const data = await sdk.find();
 
     return { data };
