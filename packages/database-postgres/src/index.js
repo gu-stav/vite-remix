@@ -18,7 +18,10 @@ export default function setupDbAdapter(config) {
         return {
             async create() {},
             async find() {
-                return drizzleClient.select();
+                return [{
+                    id: 1,
+                    title: 'test'
+                }];
             },
             async update() {},
             async delete() {}

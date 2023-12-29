@@ -1,4 +1,4 @@
-export const updatedAt = () => (config) => ({
+export const updatedAt = (pluginConfig = {}) => (config) => ({
     ...config,
     contentTypes: config.contentTypes.map((contentType) => ({
         ...contentType,

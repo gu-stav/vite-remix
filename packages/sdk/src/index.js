@@ -7,30 +7,28 @@ class SDK {
         this.config = config;
         this.db = this.config.db({ sdk: this });
         this.logger = pino();
-        
+
         // initialize plugins
         if (this.config.plugins) {
-            this.config.plugins.reduce((acc, plugin) => {
-                acc = plugin(acc);
-                return acc;
-            }, this.config);
+            this.config.plugins.reduce((acc, plugin) => plugin(acc), this.config);
         }
 
         // validate final config
         try {
             validate(this.config);
         } catch(error) {
-            console.log(error);
-            throw new Error('Config is not valid');
+            throw error;
         }
     };
 
     async create() {
         const doc = await this.db.create();
+        return doc;
     };
 
     async update() {
         const doc = await this.db.update();
+        return doc;
     };
 
     async find() {
@@ -38,7 +36,7 @@ class SDK {
 
         const doc = await this.db.find();
 
-        return [{ id: 1, title: 'Hello' }];
+        return doc;
     };
     
     async findById() {
