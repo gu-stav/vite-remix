@@ -1,6 +1,14 @@
 import { z } from "zod";
 
+const accessControlSchema = z.object({
+    create: z.optional(z.function),
+    find: z.optional(z.function),
+    update: z.optional(z.function),
+    delete: z.optional(z.function)
+})
+
 const fieldSchema = z.object({
+    access: z.optional(accessControlSchema),
     name: z.string(),
     type: z.enum([
         'text',
@@ -9,6 +17,7 @@ const fieldSchema = z.object({
 });
 
 const contentTypeSchema = z.object({
+    access: z.optional(accessControlSchema),
     attributes: z.array(fieldSchema).nonempty(),
     slug: z.string(),
 })
