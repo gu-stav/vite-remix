@@ -12,6 +12,7 @@ const fieldSchema = z.object({
     name: z.string(),
     type: z.enum([
         'text',
+        'date'
     ]),
     validate: z.optional(z.function())
 });
@@ -25,6 +26,7 @@ const contentTypeSchema = z.object({
 const schema = z.object({
     contentTypes: z.array(contentTypeSchema).nonempty(),
     db: z.function(),
+    plugins: z.optional(z.array(z.function())),
 }).strict();
 
 export function validate(config) {
