@@ -1,12 +1,17 @@
 import pino from 'pino';
 
+import { validate } from './config/validate';
+
 class SDK {
     async init(config) {
-        this.config = config;
-
-        if (!config?.db) {
-            throw new Error('You must provide a database adapter.');
+        try {
+            validate(config);
+        } catch(error) {
+            console.log(error);
+            throw new Error('Config is not valid');
         }
+
+        this.config = config;
 
         this.db = this.config.db({ sdk: this });
         this.logger = pino();
@@ -37,4 +42,4 @@ class SDK {
     };
 }
 
-export default new SDK();
+export const sdk = new SDK();

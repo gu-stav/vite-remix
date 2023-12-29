@@ -1,6 +1,6 @@
 import { Outlet, useLoaderData } from "@remix-run/react";
 import { Button, InputText } from "ui";
-import sdk from 'sdk';
+import { sdk } from 'sdk';
 
 export async function loader({ params, request }) {
     const { default: config } = await import('~studio.config.js');
