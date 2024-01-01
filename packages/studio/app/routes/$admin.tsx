@@ -1,5 +1,5 @@
 import { Outlet, useLoaderData } from "@remix-run/react";
-import { Button, InputText } from "ui";
+import { Button, InputText, Popover } from "ui";
 // import { sdk } from 'sdk';
 
 export async function loader({ params, request }) {
@@ -20,6 +20,13 @@ export default function AdminLayout() {
 
         <Button>text</Button>
         <Button>text</Button>
+
+        <Popover.Root>
+            <Popover.Trigger>Toggle</Popover.Trigger>
+            <Popover.Portal>
+                Hello world!
+            </Popover.Portal>
+        </Popover.Root>
 
         <InputText />
 
