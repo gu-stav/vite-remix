@@ -5,6 +5,8 @@ import { execa } from "execa";
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
+import 'dotenv/config'
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 program

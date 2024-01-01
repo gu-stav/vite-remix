@@ -3,14 +3,14 @@ import pino from 'pino';
 import { validate } from './config/validate';
 
 class SDK {
-    init(config) {
+    async init(config) {
         this.config = config;
         this.db = this.config.db({ sdk: this });
         this.logger = pino();
 
         // initialize plugins
         if (this.config.plugins) {
-            this.config.plugins.reduce((acc, plugin) => plugin(acc), this.config);
+            this.config = this.config.plugins.reduce((acc, plugin) => plugin(acc), this.config);
         }
 
         // validate final config
@@ -19,6 +19,8 @@ class SDK {
         } catch(error) {
             throw error;
         }
+
+        await this.db.connect();
     };
 
     async create() {

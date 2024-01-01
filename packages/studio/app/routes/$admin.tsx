@@ -1,15 +1,15 @@
 import { Outlet, useLoaderData } from "@remix-run/react";
 import { Button, InputText } from "ui";
-import { sdk } from 'sdk';
+// import { sdk } from 'sdk';
 
 export async function loader({ params, request }) {
     const { default: config } = await import('~studio.config.js');
 
-    sdk.init(config);
+    // await sdk.init(config);
 
-    const data = await sdk.find();
+    // const data = await sdk.find();
 
-    return { data };
+    return { data: [] };
 }
 
 export default function AdminLayout() {
