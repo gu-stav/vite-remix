@@ -1,5 +1,5 @@
-export function Button({ children }) {
-    return <button>
+export function Button({ children, ...props }) {
+    return <button {...props}>
         {children}
     </button>
 }

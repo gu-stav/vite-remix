@@ -1,4 +1,7 @@
 import { redirect } from "@remix-run/node";
+import { Link } from "@remix-run/react";
+
+import { Box, Button, Label, InputText, Badge, Flex } from 'ui';
 
 export function loader() {
     return null;
@@ -6,18 +9,22 @@ export function loader() {
 
 export default function Login() {
     return <form method="post">
-        <label>
-            Email
-            <input type="text" name="email" />
-        </label>
+        <Flex direction="column">
+            <Label htmlFor="email">Email Address</Label>
+            <InputText name="email" id="email" />
+        </Flex>
 
-        <label>
-            Password
-            <input type="text" name="password" />
-        </label>
+        <Flex direction="column">
+            <Label htmlFor="password">Password</Label>
+            <InputText type="password" name="password" id="password" />
+        </Flex>
 
-        <button type="submit">
-            Submit
-        </button>
+        <Box asChild>
+            <Link to="/auth/forgot-password">Forgot password?</Link>
+        </Box>
+
+        <Button type="submit">
+            Login
+        </Button>
     </form>
 }

@@ -1,0 +1,43 @@
+.base {
+    display: flex;
+}
+
+.directionRow {
+    flex-direction: row;
+}
+
+.directionColumn {
+    flex-direction: column;
+}
+
+.alignItemsCenter {
+    align-items: center;
+}
+
+.alignItemsStart {
+    align-items: start;
+}
+
+.alignItemsEnd {
+    align-items: end;
+}
+
+.alignItemsStretch {
+    align-items: stretch;
+}
+
+.justifyContentCenter {
+    justify-content: center;
+}
+
+.justifyContentStart {
+    justify-content: start;
+}
+
+.justifyContentEnd {
+    justify-content: end;
+}
+
+.justifyContentStretch {
+    justify-content: stretch;
+}
