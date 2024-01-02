@@ -1,7 +1,7 @@
-export function Text({ as = 'span', children }) {
-    const Tag = `${as}`;
+import { Box } from "../Box";
 
-    return <Tag>
+export function Text({ children }) {
+    return <Box asChild display="inline">
         {children}
-    </Tag>
+    </Box>
 }

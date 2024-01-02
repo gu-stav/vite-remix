@@ -1,3 +1,11 @@
 .base {
     display: block;
 }
+
+.displayInline {
+    display: inline;
+}
+
+.displayInlineBlock {
+    display: inline-block;
+}

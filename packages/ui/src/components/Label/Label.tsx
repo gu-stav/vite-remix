@@ -1,5 +1,11 @@
+import { Box } from "../Box"
+
 export function Label({ children, ...props }) {
-    return <label {...props}>
-        {children}
-    </label>
+    return (
+        <Box asChild {...props}>
+            <label>
+                {children}
+            </label>
+        </Box>
+    )
 }

@@ -1,8 +1,10 @@
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
 
+import { Box } from '../Box';
+
 export function Checkbox({ children, id }) {
     return (
-        <div>
+        <Box>
             <RadixCheckbox.Root id={id}>
                 <RadixCheckbox.Indicator>
                     checked
@@ -12,6 +14,6 @@ export function Checkbox({ children, id }) {
             <label htmlFor={id}>
                 {children}
             </label>
-        </div>
+        </Box>
     )
 }

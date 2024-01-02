@@ -1,5 +1,7 @@
 import * as Popover from '@radix-ui/react-popover';
 
+import { Box } from '../Box';
+
 export function Root({ children }) {
     return (
         <Popover.Root>
@@ -11,9 +13,9 @@ export function Root({ children }) {
 export function Trigger({ children, ...props }) {
     return (
         <Popover.Trigger asChild>
-            <button className="IconButton" {...props}>
+            <Box asChild {...props}>
                 {children}
-            </button>
+            </Box>
         </Popover.Trigger>
     )
 }

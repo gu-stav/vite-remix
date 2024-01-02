@@ -9,15 +9,19 @@ export interface BoxProps {
     asChild?: boolean;
     children: React.ReactNode;
     className?: string;
+    display?: React.CSSProperties['display'];
 }
 
-export function Box({ asChild, children, className }: BoxProps) {
+export function Box({ asChild, children, display, className }: BoxProps) {
     const Tag = asChild ? Slot : 'div';
 
     return <Tag className={clsx(
         styles.base,
 
-        className
+        display === 'inline' && styles.displayInline,
+        display === 'inline-block' && styles.displayInlineBlock,
+
+        className,
     )}>
         {children}
     </Tag>
