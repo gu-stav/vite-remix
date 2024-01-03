@@ -12,6 +12,7 @@ export interface TextProps extends BoxProps {
 
 export function Text({ children, align, className, transform, ...props }) {
     return <Box className={clsx(
+        align === 'center' && styles.alignCenter,
         align === 'end' && styles.alignEnd,
         align === 'start' && styles.alignStart,
 

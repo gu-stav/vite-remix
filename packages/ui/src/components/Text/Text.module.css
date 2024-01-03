@@ -1,11 +1,15 @@
 /* text-align */
 
-.alignStart {
-    text-align: start;
+.alignCenter {
+    text-align: center;
 }
 
 .alignEnd {
     text-align: end;
+}
+
+.alignStart {
+    text-align: start;
 }
 
 
