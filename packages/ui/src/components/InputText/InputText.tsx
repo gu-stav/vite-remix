@@ -1,11 +1,15 @@
 import { clsx } from 'clsx';
 
-import { Box } from '../Box';
+import { Box, BoxProps } from '../Box';
 
 import styles from './InputText.module.css';
 
-export function InputText({ type = 'text', ...props }) {
-    return <Box asChild>
-        <input type={type} className={clsx(styles.input)} {...props} />
+export interface InputTextProps extends BoxProps {
+    type?: 'text' | 'email';
+}
+
+export function InputText({ className, type = 'text', ...props }) {
+    return <Box asChild className={clsx(styles.input, className)} paddingBlock={1} paddingInline={1}>
+        <input type={type} {...props} />
     </Box>
 }

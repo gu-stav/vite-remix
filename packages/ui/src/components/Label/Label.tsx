@@ -1,9 +1,13 @@
-import { Box } from "../Box"
+import { Box, BoxProps } from "../Box"
 
-export function Label({ children, ...props }) {
+export interface LabelProps extends BoxProps {
+    htmlFor: string;
+}
+
+export function Label({ children, htmlFor, ...props }) {
     return (
         <Box asChild {...props}>
-            <label>
+            <label htmlFor={htmlFor}>
                 {children}
             </label>
         </Box>
