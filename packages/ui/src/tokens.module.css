@@ -1,8 +1,11 @@
 :global(:root) {
 
+  /* Colors */
   --color-blue: blue;
   --color-red: red;
   --color-yellow: yellow;
+
+  /* Spacing */
 
   --space-0: 0;
   --space-1: 0.4rem;
@@ -15,6 +18,8 @@
   --space-8: 4rem;
   --space-9: 4.8rem;
   --space-10: 5.6rem;
+
+  /* z-index */
 
   --z-page: 10;
   --z-sticky: 20;
