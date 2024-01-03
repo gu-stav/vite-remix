@@ -8,8 +8,12 @@ import styles from './Box.module.css';
 export interface BoxProps {
     asChild?: boolean;
     children: React.ReactNode;
+    backgroundColor?: React.CSSProperties['backgroundColor'];
     className?: string;
     display?: React.CSSProperties['display'];
+
+    flexGrow?: 0 | 1;
+    flexShrink?: 0 | 1;
 
     marginBlock?: React.CSSProperties['marginBlock'];
     marginBlockEnd?: React.CSSProperties['marginBlockEnd'];
@@ -26,22 +30,40 @@ export interface BoxProps {
     paddingInlineStart?: React.CSSProperties['paddingInlineStart'];
 }
 
+function capitalize([first, ...rest]) {
+    return first.toUpperCase() + (rest.join('').toLowerCase());
+}
+
 function variableProp(variable, variableName, styles) {
     if (variable === undefined || variable === null) {
         return false;
     }
 
-    return styles?.[`${variableName}${variable}`] ?? false;
+    let normalizedVariable = variable;
+
+    if (typeof normalizedVariable === 'string') {
+        normalizedVariable = capitalize(variable);
+    }
+
+    return styles?.[`${variableName}${normalizedVariable}`] ?? false;
 }
 
-export function Box({ asChild, children, display, className, marginBlock, marginBlockEnd, marginBlockStart, marginInline, marginInlineEnd, marginInlineStart, paddingBlock, paddingBlockEnd, paddingBlockStart, paddingInline, paddingInlineEnd, paddingInlineStart }: BoxProps) {
+export function Box({ asChild, backgroundColor, children, display, className, flexGrow, flexShrink, marginBlock, marginBlockEnd, marginBlockStart, marginInline, marginInlineEnd, marginInlineStart, paddingBlock, paddingBlockEnd, paddingBlockStart, paddingInline, paddingInlineEnd, paddingInlineStart }: BoxProps) {
     const Tag = asChild ? Slot : 'div';
 
     return <Tag className={clsx(
         styles.base,
 
+        variableProp(backgroundColor, 'backgroundColor', styles),
+
         display === 'inline' && styles.displayInline,
         display === 'inline-block' && styles.displayInlineBlock,
+
+        flexGrow === 0 && styles.flexGrow0,
+        flexGrow === 1 && styles.flexGrow1,
+
+        flexShrink === 0 && styles.flexShrink0,
+        flexShrink === 1 && styles.flexShrink1,
 
         variableProp(marginBlock, 'marginBlock', styles),
         variableProp(marginBlockEnd, 'marginBlockEnd', styles),

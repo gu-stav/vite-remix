@@ -2,6 +2,22 @@
     display: block;
 }
 
+
+/* background-color */
+
+.backgroundColorRed {
+    background-color: var(--color-red);
+}
+
+.backgroundColorBlue {
+    background-color: var(--color-blue);
+}
+
+.backgroundColorYellow {
+    background-color: var(--color-yellow);
+}
+
+
 /* display */
 
 .displayInline {
@@ -11,6 +27,29 @@
 .displayInlineBlock {
     display: inline-block;
 }
+
+
+/* flex-grow */
+
+.flexGrow0 {
+    flex-grow: 0;
+}
+
+.flexGrow1 {
+    flex-grow: 1;
+}
+
+
+/* flex-shrink */
+
+.flexShrink0 {
+    flex-shrink: 0;
+}
+
+.flexShrink1 {
+    flex-shrink: 1;
+}
+
 
 /* margin-block */
 

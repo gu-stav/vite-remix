@@ -1,5 +1,8 @@
 :global(:root) {
+
+  --color-blue: blue;
   --color-red: red;
+  --color-yellow: yellow;
 
   --space-1: 10px;
   --space-2: 20px;
