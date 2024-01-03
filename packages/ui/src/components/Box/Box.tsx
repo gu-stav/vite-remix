@@ -29,7 +29,7 @@ export interface BoxProps {
     paddingInlineEnd?: React.CSSProperties['paddingInlineEnd'];
     paddingInlineStart?: React.CSSProperties['paddingInlineStart'];
 
-    zIndex: 'page' | 'sticky' | 'popover' | 'dialog';
+    zIndex?: 'page' | 'sticky' | 'popover' | 'dialog';
 }
 
 function capitalize([first, ...rest]) {
@@ -54,10 +54,9 @@ export function Box({ asChild, backgroundColor, children, display, className, fl
     const Tag = asChild ? Slot : 'div';
 
     return <Tag className={clsx(
-        styles.base,
-
         variableProp(backgroundColor, 'backgroundColor', styles),
 
+        display === 'block' && styles.displayBlock,
         display === 'inline' && styles.displayInline,
         display === 'inline-block' && styles.displayInlineBlock,
 
