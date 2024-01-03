@@ -28,6 +28,8 @@ export interface BoxProps {
     paddingInline?: React.CSSProperties['paddingInline'];
     paddingInlineEnd?: React.CSSProperties['paddingInlineEnd'];
     paddingInlineStart?: React.CSSProperties['paddingInlineStart'];
+
+    zIndex: 'page' | 'sticky' | 'popover' | 'dialog';
 }
 
 function capitalize([first, ...rest]) {
@@ -48,7 +50,7 @@ function variableProp(variable, variableName, styles) {
     return styles?.[`${variableName}${normalizedVariable}`] ?? false;
 }
 
-export function Box({ asChild, backgroundColor, children, display, className, flexGrow, flexShrink, marginBlock, marginBlockEnd, marginBlockStart, marginInline, marginInlineEnd, marginInlineStart, paddingBlock, paddingBlockEnd, paddingBlockStart, paddingInline, paddingInlineEnd, paddingInlineStart }: BoxProps) {
+export function Box({ asChild, backgroundColor, children, display, className, flexGrow, flexShrink, marginBlock, marginBlockEnd, marginBlockStart, marginInline, marginInlineEnd, marginInlineStart, paddingBlock, paddingBlockEnd, paddingBlockStart, paddingInline, paddingInlineEnd, paddingInlineStart, zIndex }: BoxProps) {
     const Tag = asChild ? Slot : 'div';
 
     return <Tag className={clsx(
@@ -80,6 +82,8 @@ export function Box({ asChild, backgroundColor, children, display, className, fl
         variableProp(paddingInline, 'paddingInline', styles),
         variableProp(paddingInlineEnd, 'paddingInlineEnd', styles),
         variableProp(paddingInlineStart, 'paddingInlineStart', styles),
+
+        variableProp(zIndex, 'z', styles),
 
         className,
     )}>

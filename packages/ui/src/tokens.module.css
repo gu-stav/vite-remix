@@ -7,4 +7,9 @@
   --space-1: 10px;
   --space-2: 20px;
   --space-3: 30px;
+
+  --z-page: 10;
+  --z-sticky: 20;
+  --z-popover: 30;
+  --z-dialog: 40;
 }

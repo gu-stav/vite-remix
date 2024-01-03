@@ -205,3 +205,22 @@
 .paddingInlineStart3 {
     padding-inline-start: var(--space-3);
 }
+
+
+/* z-index */
+
+.zPage {
+    z-index: var(--z-page);
+}
+
+.zSticky {
+    z-index: var(--z-sticky);
+}
+
+.zPopover {
+    z-index: var(--z-popover);
+}
+
+.zDialog {
+    z-index: var(--z-dialog);
+}
