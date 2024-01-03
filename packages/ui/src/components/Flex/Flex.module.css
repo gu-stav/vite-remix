@@ -2,6 +2,9 @@
     display: flex;
 }
 
+
+/* flex-direction */
+
 .directionRow {
     flex-direction: row;
 }
@@ -9,6 +12,9 @@
 .directionColumn {
     flex-direction: column;
 }
+
+
+/* align-items */
 
 .alignItemsCenter {
     align-items: center;
@@ -26,6 +32,9 @@
     align-items: stretch;
 }
 
+
+/* justify-content */
+
 .justifyContentCenter {
     justify-content: center;
 }
@@ -40,4 +49,19 @@
 
 .justifyContentStretch {
     justify-content: stretch;
+}
+
+
+/* gap */
+
+.gap1 {
+    gap: var(--space-1);
+}
+
+.gap2 {
+    gap: var(--space-2);
+}
+
+.gap3 {
+    gap: var(--space-3);
 }
