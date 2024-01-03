@@ -1,11 +1,11 @@
-import { Box } from '../Box';
+import { Text } from '../Text';
 
 export function Button({ children, ...props }) {
     return (
-        <Box asChild display="inline-block">
+        <Text asChild display="inline-block">
             <button {...props}>
-                {children}
+                {children}     
             </button>
-        </Box>
+        </Text>
     )
 }

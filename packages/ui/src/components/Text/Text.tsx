@@ -1,7 +1,26 @@
-import { Box } from "../Box";
+import * as React from 'react';
+import { clsx } from 'clsx';
 
-export function Text({ children }) {
-    return <Box asChild display="inline">
+import { Box, BoxProps } from "../Box";
+
+import styles from './Text.module.css';
+
+export interface TextProps extends BoxProps {
+    align?: React.CSSProperties['textAlign'];
+    transform?: React.CSSProperties['textTransform'];
+}
+
+export function Text({ children, align, className, transform, ...props }) {
+    return <Box className={clsx(
+        align === 'end' && styles.alignEnd,
+        align === 'start' && styles.alignStart,
+
+        // TODO: color, lineHeight
+
+        transform === 'uppercase' && styles.transformUppercase,
+
+        className
+    )} display="inline" {...props}>
         {children}
     </Box>
 }

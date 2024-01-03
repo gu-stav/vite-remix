@@ -1,0 +1,16 @@
+/* text-align */
+
+.alignStart {
+    text-align: start;
+}
+
+.alignEnd {
+    text-align: end;
+}
+
+
+/* text-transform */
+
+.transformUppercase {
+    text-transform: uppercase;
+}
