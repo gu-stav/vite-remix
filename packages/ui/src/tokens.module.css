@@ -4,9 +4,17 @@
   --color-red: red;
   --color-yellow: yellow;
 
-  --space-1: 10px;
-  --space-2: 20px;
-  --space-3: 30px;
+  --space-0: 0;
+  --space-1: 0.4rem;
+  --space-2: 0.8rem;
+  --space-3: 1.2rem;
+  --space-4: 1.6rem;
+  --space-5: 2rem;
+  --space-6: 2.4rem;
+  --space-7: 3.2rem;
+  --space-8: 4rem;
+  --space-9: 4.8rem;
+  --space-10: 5.6rem;
 
   --z-page: 10;
   --z-sticky: 20;
