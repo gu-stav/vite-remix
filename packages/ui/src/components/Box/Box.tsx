@@ -10,6 +10,14 @@ export interface BoxProps {
     children: React.ReactNode;
     className?: string;
     display?: React.CSSProperties['display'];
+
+    marginBlock?: React.CSSProperties['marginBlock'];
+    marginBlockEnd?: React.CSSProperties['marginBlockEnd'];
+    marginBlockStart?: React.CSSProperties['marginBlockStart'];
+    marginInline?: React.CSSProperties['marginInline'];
+    marginInlineEnd?: React.CSSProperties['marginInlineEnd'];
+    marginInlineStart?: React.CSSProperties['marginInlineStart'];
+
     paddingBlock?: React.CSSProperties['paddingBlock'];
     paddingBlockEnd?: React.CSSProperties['paddingBlockEnd'];
     paddingBlockStart?: React.CSSProperties['paddingBlockStart'];
@@ -18,7 +26,7 @@ export interface BoxProps {
     paddingInlineStart?: React.CSSProperties['paddingInlineStart'];
 }
 
-export function Box({ asChild, children, display, className, paddingBlock, paddingBlockEnd, paddingBlockStart, paddingInline, paddingInlineEnd, paddingInlineStart }: BoxProps) {
+export function Box({ asChild, children, display, className, marginBlock, marginBlockEnd, marginBlockStart, marginInline, marginInlineEnd, marginInlineStart, paddingBlock, paddingBlockEnd, paddingBlockStart, paddingInline, paddingInlineEnd, paddingInlineStart }: BoxProps) {
     const Tag = asChild ? Slot : 'div';
 
     return <Tag className={clsx(
@@ -26,6 +34,30 @@ export function Box({ asChild, children, display, className, paddingBlock, paddi
 
         display === 'inline' && styles.displayInline,
         display === 'inline-block' && styles.displayInlineBlock,
+
+        marginBlock === 1 && styles.marginBlock1,
+        marginBlock === 2 && styles.marginBlock2,
+        marginBlock === 3 && styles.marginBlock3,
+
+        marginBlockEnd === 1 && styles.marginBlockEnd1,
+        marginBlockEnd === 2 && styles.marginBlockEnd2,
+        marginBlockEnd === 3 && styles.marginBlockEnd3,
+
+        marginBlockStart === 1 && styles.marginBlockStart1,
+        marginBlockStart === 2 && styles.marginBlockStart2,
+        marginBlockStart === 3 && styles.marginBlockStart3,
+
+        marginInline === 1 && styles.marginInline1,
+        marginInline === 2 && styles.marginInline2,
+        marginInline === 3 && styles.marginInline3,
+
+        marginInlineEnd === 1 && styles.marginInlineEnd1,
+        marginInlineEnd === 2 && styles.marginInlineEnd2,
+        marginInlineEnd === 3 && styles.marginInlineEnd3,
+
+        marginInlineStart === 1 && styles.marginInlineStart1,
+        marginInlineStart === 2 && styles.marginInlineStart2,
+        marginInlineStart === 3 && styles.marginInlineStart3,
 
         paddingBlock === 1 && styles.paddingBlock1,
         paddingBlock === 2 && styles.paddingBlock2,
