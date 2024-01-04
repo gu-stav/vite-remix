@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "storybook dev -p 6006 --no-open",
     "build": "vite build",
-    "build:storybook": "storybook build"
+    "build:storybook": "storybook build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "author": "Gustav Hansen <gu@stav.dev>",
   "license": "MIT",

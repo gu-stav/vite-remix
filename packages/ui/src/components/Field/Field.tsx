@@ -1,4 +1,4 @@
-export function Field({ name, children }) {
+export function Field({ children }) {
     return <div>
         {children}
     </div>
