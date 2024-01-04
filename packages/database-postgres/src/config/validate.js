@@ -1,9 +1,11 @@
 import { z } from 'zod';
 
-const schema = z.object({
-    connectionString: z.string()
-}).strict();
+const schema = z
+  .object({
+    connectionString: z.string(),
+  })
+  .strict();
 
 export function validate(config) {
-    return schema.parse(config);
+  return schema.parse(config);
 }

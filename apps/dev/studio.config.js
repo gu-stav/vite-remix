@@ -1,26 +1,24 @@
-import { defineConfig } from "unding-studio-remix/config";
+import { defineConfig } from 'unding-studio-remix/config';
 // import postgres from 'database-postgres';
 
-import { updatedAt } from "./src/plugins/updatedAt";
+import { updatedAt } from './src/plugins/updatedAt';
 
 export default defineConfig({
-    contentTypes: [
+  contentTypes: [
+    {
+      slug: 'content',
+      attributes: [
         {
-            slug: 'content',
-            attributes: [
-                {
-                    name: 'title',
-                    type: 'text'
-                }
-            ]
-        }
-    ],
+          name: 'title',
+          type: 'text',
+        },
+      ],
+    },
+  ],
 
-    // db: postgres({
-    //     connectionString: process.env.DB_CONNECTION
-    // }),
+  // db: postgres({
+  //     connectionString: process.env.DB_CONNECTION
+  // }),
 
-    plugins: [
-        updatedAt()
-    ]
-})
+  plugins: [updatedAt()],
+});

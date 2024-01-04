@@ -1,3 +1,3 @@
 export function defineConfig(config = {}) {
-    return config;
+  return config;
 }

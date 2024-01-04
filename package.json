@@ -1,20 +1,24 @@
 {
-    "name": "unding",
-    "private": true,
-    "sideEffects": false,
-    "type": "module",
-    "scripts": {
-        "dev": "pnpm run --if-present --parallel -r dev",
-        "lint": "pnpm run --if-present --parallel -r lint",
-        "lint:fix": "pnpm run --if-present --parallel -r lint:fix"
-    },
-    "engines": {
-        "node": ">=18.0.0"
-    },
-    "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^6.17.0",
-        "@typescript-eslint/parser": "^6.17.0",
-        "eslint": "^8.38.0",
-        "eslint-plugin-react": "^7.33.2"
-    }
+  "name": "unding",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm run --if-present --parallel -r dev",
+    "lint": "pnpm run --if-present --parallel -r lint",
+    "lint:fix": "pnpm run --if-present --parallel -r lint:fix",
+    "prettier": "prettier . --write"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.33.2"
+  },
+  "dependencies": {
+    "prettier": "^3.1.1"
+  }
 }

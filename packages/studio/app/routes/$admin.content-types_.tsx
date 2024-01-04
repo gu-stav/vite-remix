@@ -1,5 +1,3 @@
 export default function ContentTypesIndex() {
-    return <>
-        Content Types Dashboard
-    </>
+  return <>Content Types Dashboard</>;
 }

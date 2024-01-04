@@ -8,16 +8,27 @@ import { Box, BoxProps } from '../Box';
 import styles from './Flex.module.css';
 
 export interface FlexProps extends BoxProps {
-    alignItems?: React.CSSProperties['alignItems'];
-    direction?: React.CSSProperties['flexDirection'];
-    gap?: React.CSSProperties['gap'];
-    justifyContent?: React.CSSProperties['justifyContent'];
+  alignItems?: React.CSSProperties['alignItems'];
+  direction?: React.CSSProperties['flexDirection'];
+  gap?: React.CSSProperties['gap'];
+  justifyContent?: React.CSSProperties['justifyContent'];
 }
 
-export function Flex({ alignItems, asChild = false, children, className, direction = 'row', gap, justifyContent, ...props }: FlexProps) {
-    const Tag = asChild ? Slot : Box;
+export function Flex({
+  alignItems,
+  asChild = false,
+  children,
+  className,
+  direction = 'row',
+  gap,
+  justifyContent,
+  ...props
+}: FlexProps) {
+  const Tag = asChild ? Slot : Box;
 
-    return <Tag className={clsx(
+  return (
+    <Tag
+      className={clsx(
         styles.base,
 
         alignItems === 'start' && styles.alignItemsStart,
@@ -38,7 +49,10 @@ export function Flex({ alignItems, asChild = false, children, className, directi
         justifyContent === 'stretch' && styles.justifyContentStretch,
 
         className
-    )} {...props}>
-        {children}
+      )}
+      {...props}
+    >
+      {children}
     </Tag>
+  );
 }

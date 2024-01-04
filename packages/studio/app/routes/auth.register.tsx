@@ -1,33 +1,33 @@
-import { redirect } from "@remix-run/node";
+import { redirect } from '@remix-run/node';
 
 export function loader() {
-    return null;
+  return null;
 }
 
 export default function Login() {
-    return <form method="post">
-         <label>
-            Firstname
-            <input type="text" name="firstname" />
-        </label>
+  return (
+    <form method="post">
+      <label>
+        Firstname
+        <input type="text" name="firstname" />
+      </label>
 
-        <label>
-            Lastname
-            <input type="text" name="lastname" />
-        </label>
+      <label>
+        Lastname
+        <input type="text" name="lastname" />
+      </label>
 
-        <label>
-            Email
-            <input type="text" name="email" />
-        </label>
+      <label>
+        Email
+        <input type="text" name="email" />
+      </label>
 
-        <label>
-            Password
-            <input type="text" name="password" />
-        </label>
+      <label>
+        Password
+        <input type="text" name="password" />
+      </label>
 
-        <button type="submit">
-            Submit
-        </button>
+      <button type="submit">Submit</button>
     </form>
+  );
 }

@@ -13,5 +13,5 @@ export default {
     target: 'esnext',
   },
 
-  plugins: [react(), dts()]
+  plugins: [react(), dts()],
 };

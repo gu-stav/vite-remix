@@ -1,67 +1,63 @@
 .base {
-    display: flex;
+  display: flex;
 }
-
 
 /* flex-direction */
 
 .directionRow {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .directionColumn {
-    flex-direction: column;
+  flex-direction: column;
 }
-
 
 /* align-items */
 
 .alignItemsCenter {
-    align-items: center;
+  align-items: center;
 }
 
 .alignItemsStart {
-    align-items: start;
+  align-items: start;
 }
 
 .alignItemsEnd {
-    align-items: end;
+  align-items: end;
 }
 
 .alignItemsStretch {
-    align-items: stretch;
+  align-items: stretch;
 }
-
 
 /* justify-content */
 
 .justifyContentCenter {
-    justify-content: center;
+  justify-content: center;
 }
 
 .justifyContentStart {
-    justify-content: start;
+  justify-content: start;
 }
 
 .justifyContentEnd {
-    justify-content: end;
+  justify-content: end;
 }
 
 .justifyContentStretch {
-    justify-content: stretch;
+  justify-content: stretch;
 }
-
 
 /* gap */
 
 .gap1 {
-    gap: var(--space-1);
+  gap: var(--space-1);
 }
 
 .gap2 {
-    gap: var(--space-2);
+  gap: var(--space-2);
 }
 
 .gap3 {
-    gap: var(--space-3);
+  gap: var(--space-3);
 }

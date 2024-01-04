@@ -1,5 +1,3 @@
 export function Field({ children }) {
-    return <div>
-        {children}
-    </div>
+  return <div>{children}</div>;
 }

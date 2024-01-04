@@ -1,20 +1,19 @@
 /* text-align */
 
 .alignCenter {
-    text-align: center;
+  text-align: center;
 }
 
 .alignEnd {
-    text-align: end;
+  text-align: end;
 }
 
 .alignStart {
-    text-align: start;
+  text-align: start;
 }
-
 
 /* text-transform */
 
 .transformUppercase {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }

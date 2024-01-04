@@ -1,5 +1,3 @@
 export default function ContentTypeEditView() {
-    return <>
-        Edit-view
-    </>
+  return <>Edit-view</>;
 }

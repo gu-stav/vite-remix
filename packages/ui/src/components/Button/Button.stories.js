@@ -10,6 +10,6 @@ export default {
 
 export const Primary = {
   args: {
-    children: 'test'
+    children: 'test',
   },
 };

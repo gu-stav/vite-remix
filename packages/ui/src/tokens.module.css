@@ -1,10 +1,8 @@
 :global(:root) {
-
   /* Colors */
   --color-blue: blue;
   --color-red: red;
   --color-yellow: yellow;
-
 
   /* Spacing - based on the magic number 0.4rem. */
 
@@ -19,7 +17,6 @@
   --space-8: 4rem;
   --space-9: 4.8rem;
   --space-10: 5.6rem;
-
 
   /* z-index */
 

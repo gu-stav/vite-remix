@@ -6,54 +6,77 @@ import { clsx } from 'clsx';
 import styles from './Box.module.css';
 
 export interface BoxProps {
-    asChild?: boolean;
-    children: React.ReactNode;
-    backgroundColor?: React.CSSProperties['backgroundColor'];
-    className?: string;
-    display?: React.CSSProperties['display'];
+  asChild?: boolean;
+  children: React.ReactNode;
+  backgroundColor?: React.CSSProperties['backgroundColor'];
+  className?: string;
+  display?: React.CSSProperties['display'];
 
-    flexGrow?: 0 | 1;
-    flexShrink?: 0 | 1;
+  flexGrow?: 0 | 1;
+  flexShrink?: 0 | 1;
 
-    marginBlock?: React.CSSProperties['marginBlock'];
-    marginBlockEnd?: React.CSSProperties['marginBlockEnd'];
-    marginBlockStart?: React.CSSProperties['marginBlockStart'];
-    marginInline?: React.CSSProperties['marginInline'];
-    marginInlineEnd?: React.CSSProperties['marginInlineEnd'];
-    marginInlineStart?: React.CSSProperties['marginInlineStart'];
+  marginBlock?: React.CSSProperties['marginBlock'];
+  marginBlockEnd?: React.CSSProperties['marginBlockEnd'];
+  marginBlockStart?: React.CSSProperties['marginBlockStart'];
+  marginInline?: React.CSSProperties['marginInline'];
+  marginInlineEnd?: React.CSSProperties['marginInlineEnd'];
+  marginInlineStart?: React.CSSProperties['marginInlineStart'];
 
-    paddingBlock?: React.CSSProperties['paddingBlock'];
-    paddingBlockEnd?: React.CSSProperties['paddingBlockEnd'];
-    paddingBlockStart?: React.CSSProperties['paddingBlockStart'];
-    paddingInline?: React.CSSProperties['paddingInline'];
-    paddingInlineEnd?: React.CSSProperties['paddingInlineEnd'];
-    paddingInlineStart?: React.CSSProperties['paddingInlineStart'];
+  paddingBlock?: React.CSSProperties['paddingBlock'];
+  paddingBlockEnd?: React.CSSProperties['paddingBlockEnd'];
+  paddingBlockStart?: React.CSSProperties['paddingBlockStart'];
+  paddingInline?: React.CSSProperties['paddingInline'];
+  paddingInlineEnd?: React.CSSProperties['paddingInlineEnd'];
+  paddingInlineStart?: React.CSSProperties['paddingInlineStart'];
 
-    zIndex?: 'page' | 'sticky' | 'popover' | 'dialog';
+  zIndex?: 'page' | 'sticky' | 'popover' | 'dialog';
 }
 
 function capitalize([first, ...rest]) {
-    return first.toUpperCase() + (rest.join('').toLowerCase());
+  return first.toUpperCase() + rest.join('').toLowerCase();
 }
 
 function variableProp(variable, variableName, styles) {
-    if (variable === undefined || variable === null) {
-        return false;
-    }
+  if (variable === undefined || variable === null) {
+    return false;
+  }
 
-    let normalizedVariable = variable;
+  let normalizedVariable = variable;
 
-    if (typeof normalizedVariable === 'string') {
-        normalizedVariable = capitalize(variable);
-    }
+  if (typeof normalizedVariable === 'string') {
+    normalizedVariable = capitalize(variable);
+  }
 
-    return styles?.[`${variableName}${normalizedVariable}`] ?? false;
+  return styles?.[`${variableName}${normalizedVariable}`] ?? false;
 }
 
-export function Box({ asChild, backgroundColor, children, display, className, flexGrow, flexShrink, marginBlock, marginBlockEnd, marginBlockStart, marginInline, marginInlineEnd, marginInlineStart, paddingBlock, paddingBlockEnd, paddingBlockStart, paddingInline, paddingInlineEnd, paddingInlineStart, zIndex }: BoxProps) {
-    const Tag = asChild ? Slot : 'div';
+export function Box({
+  asChild,
+  backgroundColor,
+  children,
+  display,
+  className,
+  flexGrow,
+  flexShrink,
+  marginBlock,
+  marginBlockEnd,
+  marginBlockStart,
+  marginInline,
+  marginInlineEnd,
+  marginInlineStart,
+  paddingBlock,
+  paddingBlockEnd,
+  paddingBlockStart,
+  paddingInline,
+  paddingInlineEnd,
+  paddingInlineStart,
+  zIndex,
+}: BoxProps) {
+  const Tag = asChild ? Slot : 'div';
 
-    return <Tag className={clsx(
+  return (
+    <Tag
+      className={clsx(
         variableProp(backgroundColor, 'backgroundColor', styles),
 
         display === 'block' && styles.displayBlock,
@@ -84,8 +107,10 @@ export function Box({ asChild, backgroundColor, children, display, className, fl
 
         variableProp(zIndex, 'z', styles),
 
-        className,
-    )}>
-        {children}
+        className
+      )}
+    >
+      {children}
     </Tag>
+  );
 }

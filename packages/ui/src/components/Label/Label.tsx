@@ -1,15 +1,13 @@
-import { Box, BoxProps } from "../Box"
+import { Box, BoxProps } from '../Box';
 
 export interface LabelProps extends BoxProps {
-    htmlFor: string;
+  htmlFor: string;
 }
 
 export function Label({ children, htmlFor, ...props }) {
-    return (
-        <Box asChild {...props}>
-            <label htmlFor={htmlFor}>
-                {children}
-            </label>
-        </Box>
-    )
+  return (
+    <Box asChild {...props}>
+      <label htmlFor={htmlFor}>{children}</label>
+    </Box>
+  );
 }
