@@ -107,7 +107,7 @@ export function Box({
 
         variableProp(zIndex, 'z', styles),
 
-        className
+        className,
       )}
     >
       {children}

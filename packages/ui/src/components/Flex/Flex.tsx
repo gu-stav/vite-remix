@@ -48,7 +48,7 @@ export function Flex({
         justifyContent === 'end' && styles.justifyContentEnd,
         justifyContent === 'stretch' && styles.justifyContentStretch,
 
-        className
+        className,
       )}
       {...props}
     >

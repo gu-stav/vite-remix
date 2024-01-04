@@ -10,7 +10,12 @@ export interface InputTextProps extends BoxProps {
 
 export function InputText({ className, type = 'text', ...props }) {
   return (
-    <Box asChild className={clsx(styles.input, className)} paddingBlock={1} paddingInline={1}>
+    <Box
+      asChild
+      className={clsx(styles.input, className)}
+      paddingBlock={1}
+      paddingInline={1}
+    >
       <input type={type} {...props} />
     </Box>
   );

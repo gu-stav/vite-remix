@@ -10,7 +10,10 @@ class SDK {
 
     // initialize plugins
     if (this.config.plugins) {
-      this.config = this.config.plugins.reduce((acc, plugin) => plugin(acc), this.config);
+      this.config = this.config.plugins.reduce(
+        (acc, plugin) => plugin(acc),
+        this.config,
+      );
     }
 
     // validate final config

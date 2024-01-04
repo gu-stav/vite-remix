@@ -6,7 +6,12 @@ export default defineConfig({
   plugins: [
     remix({
       assetsBuildDirectory: resolve(process.env.ORIGINAL_CWD, 'build'),
-      serverBuildPath: resolve(process.env.ORIGINAL_CWD, 'build', 'server', 'index.js'),
+      serverBuildPath: resolve(
+        process.env.ORIGINAL_CWD,
+        'build',
+        'server',
+        'index.js',
+      ),
     }),
   ],
 

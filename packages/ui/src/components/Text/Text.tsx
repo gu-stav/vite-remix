@@ -22,7 +22,7 @@ export function Text({ children, align, className, transform, ...props }) {
 
         transform === 'uppercase' && styles.transformUppercase,
 
-        className
+        className,
       )}
       display="inline"
       {...props}
