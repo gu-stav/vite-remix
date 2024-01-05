@@ -1,13 +1,34 @@
-import { redirect } from '@remix-run/node';
-import { Link } from '@remix-run/react';
+import { json, redirect } from '@remix-run/node';
+import { Form, Link, useActionData } from '@remix-run/react';
+import type { ActionFunctionArgs } from "@remix-run/node";
 
 import { Box, Button, Label, InputText, Flex, Text } from 'ui';
+import { sdk } from 'sdk';
+
+export async function action({ request }: ActionFunctionArgs) {
+  const { default: config } = await import('~studio.config.js');
+  const formData = await request.formData();
+
+  await sdk.init(config);
+
+  try {
+    await sdk.login(formData);
+
+    // set auth cookie
+
+    return redirect('/admin/');
+  } catch(error) {
+    return json({ errors: [error] });
+  }
+}
 
 export function loader() {
   return null;
 }
 
 export default function Login() {
+  const actionData = useActionData<typeof action>();
+
   return (
     <Flex direction="column">
       <Text asChild>
@@ -15,7 +36,7 @@ export default function Login() {
       </Text>
 
       <Flex asChild direction="column" gap={1}>
-        <form method="post">
+        <Form method="post">
           <Flex direction="column" gap={1}>
             <Label htmlFor="email">Email Address</Label>
             <InputText name="email" id="email" />
@@ -31,7 +52,7 @@ export default function Login() {
           </Box>
 
           <Button type="submit">Login</Button>
-        </form>
+        </Form>
       </Flex>
     </Flex>
   );

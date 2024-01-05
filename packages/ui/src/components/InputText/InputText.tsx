@@ -13,8 +13,8 @@ export function InputText({ className, type = 'text', ...props }: InputTextProps
     <Box
       asChild
       className={clsx(styles.input, className)}
-      paddingBlock={1}
-      paddingInline={1}
+      paddingBlock={2}
+      paddingInline={2}
     >
       <input type={type} {...props} />
     </Box>
