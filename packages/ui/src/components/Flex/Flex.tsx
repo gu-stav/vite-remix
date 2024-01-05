@@ -6,12 +6,16 @@ import { clsx } from 'clsx';
 import { Box, BoxProps } from '../Box';
 
 import styles from './Flex.module.css';
+import type { Spaces } from '../../types';
+import { variableProp } from '../../utils/variableProp';
+
+type FlexDirectionValues = 'start' | 'center' | 'end' | 'stretch';
 
 export interface FlexProps extends BoxProps {
-  alignItems?: React.CSSProperties['alignItems'];
-  direction?: React.CSSProperties['flexDirection'];
-  gap?: React.CSSProperties['gap'];
-  justifyContent?: React.CSSProperties['justifyContent'];
+  alignItems?: FlexDirectionValues;
+  direction?: 'column' | 'row';
+  gap?: Spaces;
+  justifyContent?: FlexDirectionValues;
 }
 
 export function Flex({
@@ -31,22 +35,10 @@ export function Flex({
       className={clsx(
         styles.base,
 
-        alignItems === 'start' && styles.alignItemsStart,
-        alignItems === 'center' && styles.alignItemsCenter,
-        alignItems === 'end' && styles.alignItemsEnd,
-        alignItems === 'stretch' && styles.alignItemsStretch,
-
-        direction === 'row' && styles.directionRow,
-        direction === 'column' && styles.directionColumn,
-
-        gap === 1 && styles.gap1,
-        gap === 2 && styles.gap2,
-        gap === 3 && styles.gap3,
-
-        justifyContent === 'start' && styles.justifyContentStart,
-        justifyContent === 'center' && styles.justifyContentCenter,
-        justifyContent === 'end' && styles.justifyContentEnd,
-        justifyContent === 'stretch' && styles.justifyContentStretch,
+        variableProp(alignItems, 'alignItems', styles),
+        variableProp(direction, 'direction', styles),
+        variableProp(gap, 'gap', styles),
+        variableProp(justifyContent, 'justifyContent', styles),
 
         className,
       )}

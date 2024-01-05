@@ -4,50 +4,34 @@ import { Slot } from '@radix-ui/react-slot';
 import { clsx } from 'clsx';
 
 import styles from './Box.module.css';
+import type { Colors, Spaces } from '../../types';
+import { variableProp } from '../../utils/variableProp';
 
 export interface BoxProps {
   asChild?: boolean;
   children: React.ReactNode;
-  backgroundColor?: React.CSSProperties['backgroundColor'];
+  backgroundColor?: Colors;
   className?: string;
   display?: React.CSSProperties['display'];
 
   flexGrow?: 0 | 1;
   flexShrink?: 0 | 1;
 
-  marginBlock?: React.CSSProperties['marginBlock'];
-  marginBlockEnd?: React.CSSProperties['marginBlockEnd'];
-  marginBlockStart?: React.CSSProperties['marginBlockStart'];
-  marginInline?: React.CSSProperties['marginInline'];
-  marginInlineEnd?: React.CSSProperties['marginInlineEnd'];
-  marginInlineStart?: React.CSSProperties['marginInlineStart'];
+  marginBlock?: Spaces;
+  marginBlockEnd?: Spaces;
+  marginBlockStart?: Spaces;
+  marginInline?: Spaces;
+  marginInlineEnd?: Spaces;
+  marginInlineStart?: Spaces;
 
-  paddingBlock?: React.CSSProperties['paddingBlock'];
-  paddingBlockEnd?: React.CSSProperties['paddingBlockEnd'];
-  paddingBlockStart?: React.CSSProperties['paddingBlockStart'];
-  paddingInline?: React.CSSProperties['paddingInline'];
-  paddingInlineEnd?: React.CSSProperties['paddingInlineEnd'];
-  paddingInlineStart?: React.CSSProperties['paddingInlineStart'];
+  paddingBlock?: Spaces;
+  paddingBlockEnd?: Spaces;
+  paddingBlockStart?: Spaces;
+  paddingInline?: Spaces;
+  paddingInlineEnd?: Spaces;
+  paddingInlineStart?: Spaces;
 
   zIndex?: 'page' | 'sticky' | 'popover' | 'dialog';
-}
-
-function capitalize([first, ...rest]) {
-  return first.toUpperCase() + rest.join('').toLowerCase();
-}
-
-function variableProp(variable, variableName, styles) {
-  if (variable === undefined || variable === null) {
-    return false;
-  }
-
-  let normalizedVariable = variable;
-
-  if (typeof normalizedVariable === 'string') {
-    normalizedVariable = capitalize(variable);
-  }
-
-  return styles?.[`${variableName}${normalizedVariable}`] ?? false;
 }
 
 export function Box({
@@ -83,11 +67,8 @@ export function Box({
         display === 'inline' && styles.displayInline,
         display === 'inline-block' && styles.displayInlineBlock,
 
-        flexGrow === 0 && styles.flexGrow0,
-        flexGrow === 1 && styles.flexGrow1,
-
-        flexShrink === 0 && styles.flexShrink0,
-        flexShrink === 1 && styles.flexShrink1,
+        variableProp(flexGrow, 'flexGrow', styles),
+        variableProp(flexShrink, 'flexShrink', styles),
 
         variableProp(marginBlock, 'marginBlock', styles),
         variableProp(marginBlockEnd, 'marginBlockEnd', styles),

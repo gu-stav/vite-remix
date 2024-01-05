@@ -50,6 +50,10 @@
 
 /* gap */
 
+.gap0 {
+  gap: var(--space-0);
+}
+
 .gap1 {
   gap: var(--space-1);
 }
@@ -60,4 +64,32 @@
 
 .gap3 {
   gap: var(--space-3);
+}
+
+.gap4 {
+  gap: var(--space-4);
+}
+
+.gap5 {
+  gap: var(--space-5);
+}
+
+.gap6 {
+  gap: var(--space-6);
+}
+
+.gap7 {
+  gap: var(--space-7);
+}
+
+.gap8 {
+  gap: var(--space-8);
+}
+
+.gap9 {
+  gap: var(--space-9);
+}
+
+.gap10 {
+  gap: var(--space-10);
 }
