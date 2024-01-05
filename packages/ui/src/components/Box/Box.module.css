@@ -1,15 +1,63 @@
 /* background-color */
 
-.backgroundColorRed {
-  background-color: var(--color-red);
+.backgroundColorPrimary50 {
+  background-color: var(--color-primary-50);
 }
 
-.backgroundColorBlue {
-  background-color: var(--color-blue);
+.backgroundColorPrimary100 {
+  background-color: var(--color-primary-100);
 }
 
-.backgroundColorYellow {
-  background-color: var(--color-yellow);
+.backgroundColorPrimary200 {
+  background-color: var(--color-primary-200);
+}
+
+.backgroundColorPrimary300 {
+  background-color: var(--color-primary-300);
+}
+
+.backgroundColorPrimary400 {
+  background-color: var(--color-primary-400);
+}
+
+.backgroundColorPrimary500 {
+  background-color: var(--color-primary-500);
+}
+
+.backgroundColorPrimary600 {
+  background-color: var(--color-primary-600);
+}
+
+.backgroundColorPrimary700 {
+  background-color: var(--color-primary-700);
+}
+
+.backgroundColorPrimary800 {
+  background-color: var(--color-primary-800);
+}
+
+.backgroundColorPrimary900 {
+  background-color: var(--color-primary-900);
+}
+
+.backgroundColorPrimary950 {
+  background-color: var(--color-primary-950);
+}
+
+.backgroundColorError600 {
+  background-color: var(--color-error-600);
+}
+
+.backgroundColorError700 {
+  background-color: var(--color-error-700);
+}
+
+.backgroundColorSuccess600 {
+  background-color: var(--color-success-600);
+}
+
+.backgroundColorSuccess700 {
+  background-color: var(--color-success-700);
 }
 
 /* display */

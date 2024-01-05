@@ -1,8 +1,50 @@
 :global(:root) {
   /* Colors */
-  --color-blue: blue;
-  --color-red: red;
-  --color-yellow: yellow;
+  --color-primary-50: #fafafa;
+  --color-primary-100: #f4f4f5;
+  --color-primary-200: #e4e4e7;
+  --color-primary-300: #d4d4d8;
+  --color-primary-400: #d4d4d8;
+  --color-primary-500: #71717a;
+  --color-primary-600: #52525b;
+  --color-primary-700: #3f3f46;
+  --color-primary-800: #27272a;
+  --color-primary-900: #18181b;
+  --color-primary-950: #09090b;
+
+
+  /*
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2
+  --color-error-200: #fecaca;
+  --color-error-300: #fca5a5;
+  --color-error-400: #f87171;
+  --color-error-500: #ef4444;
+  */
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+  /*
+  --color-error-800: #991b1b;
+  --color-error-900: #7f1d1d;
+  --color-error-950: #450a0a;
+  */
+
+
+  /*
+  --color-success-50: #ecfdf5;
+  --color-success-100: #d1fae5
+  --color-success-200: #a7f3d0;
+  --color-success-300: #6ee7b7;
+  --color-success-400: #34d399;
+  --color-success-500: #10b981;
+  */
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+  /*
+  --color-success-800: #065f46;
+  --color-success-900: #064e3b;
+  --color-success-950: #022c22;
+  */
 
   /* Spacing - based on the magic number 0.4rem. */
 
