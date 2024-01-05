@@ -8,7 +8,7 @@ export interface InputTextProps extends BoxProps {
   type?: 'text' | 'email';
 }
 
-export function InputText({ className, type = 'text', ...props }) {
+export function InputText({ className, type = 'text', ...props }: InputTextProps & HTMLInputElement) {
   return (
     <Box
       asChild
