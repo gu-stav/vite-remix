@@ -8,7 +8,7 @@ export async function loader({ params, request }) {
 
   const sdk = await init();
 
-  await sdk.find()
+  await sdk.find();
 
   return { data: [] };
 }

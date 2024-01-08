@@ -27,7 +27,7 @@ class SDK {
     await this.db.connect();
   }
 
-  async create() {
+  async create({ contentType, data }) {
     const doc = await this.db.create();
     return doc;
   }
@@ -53,29 +53,19 @@ class SDK {
     const doc = await this.db.delete();
   }
 
-  async login(payload) {
-    // throw new Error('Invalid user');
-    let data = {};
-
-    if (payload instanceof FormData) {
-      data = {
-        email: payload.get('email'),
-        password: payload.get('password'),
-      }
-    } else if (typeof payload === 'object') {
-      data = payload;
-    }
-
-    const userSchema = z.object({
-      email: z.string().email(),
-      password: z.string().min(1)
-    }).strict();
+  async login({ data }) {
+    const userSchema = z
+      .object({
+        email: z.string().email(),
+        password: z.string().min(1),
+      })
+      .strict();
 
     userSchema.parse(data);
 
     return {
-      token: 'something'
-    }
+      token: 'something',
+    };
   }
 }
 

@@ -18,7 +18,5 @@
     "types": ["vite/client"],
     "baseUrl": "."
   },
-  "include": [
-    "src",
-  ]
+  "include": ["src"]
 }

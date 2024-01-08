@@ -9,22 +9,32 @@ import { Field } from '../../src/components/Field';
 import { cookie } from '../../src/lib/auth.server';
 
 export async function action({ request }: ActionFunctionArgs) {
-  const formData = await request.formData();
   const sdk = await init();
+  const formData = await request.formData();
 
   try {
-    const token = await sdk.login(formData);
+    const token = await sdk.login({
+      data: {
+        email: formData.get('email'),
+        password: formData.get('password'),
+      },
+    });
 
     return redirect('/admin/', {
       headers: {
-        'Set-Cookie': await cookie.serialize(token)
-      }
+        'Set-Cookie': await cookie.serialize(token),
+      },
     });
   } catch (error) {
-    return json({ errors: error.errors.reduce((acc, error) => {
-      acc[error.path[0]] = error.message;
-      return acc;
-    }, {}) }, 400);
+    return json(
+      {
+        errors: error.errors.reduce((acc, error) => {
+          acc[error.path[0]] = error.message;
+          return acc;
+        }, {}),
+      },
+      400,
+    );
   }
 }
 
@@ -55,9 +65,7 @@ export default function Login() {
             <InputText name="email" id="email" />
 
             {actionData?.errors?.email && (
-              <Field.Error>
-                {actionData.errors.email}
-              </Field.Error>
+              <Field.Error>{actionData.errors.email}</Field.Error>
             )}
           </Field.Root>
 
@@ -69,9 +77,7 @@ export default function Login() {
             <InputText type="password" name="password" id="password" />
 
             {actionData?.errors?.password && (
-              <Field.Error>
-                {actionData.errors.password}
-              </Field.Error>
+              <Field.Error>{actionData.errors.password}</Field.Error>
             )}
           </Field.Root>
 

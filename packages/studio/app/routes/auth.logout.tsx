@@ -6,8 +6,8 @@ export async function loader() {
   throw redirect('/auth/login', {
     headers: {
       'Set-Cookie': await cookie.serialize('', {
-        maxAge: 0
-      })
-    }
+        maxAge: 0,
+      }),
+    },
   });
 }

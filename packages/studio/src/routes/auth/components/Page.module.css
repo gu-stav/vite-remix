@@ -1,9 +1,9 @@
 .container {
-    max-width: 70rem;
-    min-width: 50rem;
-    width: 50%;
+  max-width: 70rem;
+  min-width: 50rem;
+  width: 50%;
 }
 
 .inner {
-    height: 100vh;
+  height: 100vh;
 }
