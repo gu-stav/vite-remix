@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Flex, Text } from 'ui';
+import { Box, Flex, FlexProps, Text } from 'ui';
 
 import { Badge } from '../Badge';
 import { Label } from '../Label';
@@ -24,13 +24,13 @@ export function Error({ children }: ErrorProps) {
   );
 }
 
-interface RootProps {
+interface RootProps extends FlexProps {
   children: React.ReactNode;
 }
 
-export function Root({ children }: RootProps) {
+export function Root({ children, ...props }: RootProps) {
   return (
-    <Flex direction="column" gap={1}>
+    <Flex direction="column" gap={1} {...props}>
       {children}
     </Flex>
   );

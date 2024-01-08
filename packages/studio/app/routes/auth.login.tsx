@@ -29,6 +29,7 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export function loader() {
+  // TODO: check if there is more than 1 user, otherwise redirect to `/auth/register`
   return null;
 }
 
