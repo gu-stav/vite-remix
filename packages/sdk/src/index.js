@@ -1,6 +1,6 @@
 import pino from 'pino';
 
-import { validate } from './config/validate';
+// import { validate } from './config/validate';
 
 class SDK {
   async init(config) {
@@ -18,7 +18,7 @@ class SDK {
 
     // validate final config
     try {
-      validate(this.config);
+      // validate(this.config);
     } catch (error) {
       throw error;
     }
