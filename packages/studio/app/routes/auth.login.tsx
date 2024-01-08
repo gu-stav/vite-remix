@@ -3,24 +3,28 @@ import { Form, Link, useActionData } from '@remix-run/react';
 import type { ActionFunctionArgs } from '@remix-run/node';
 
 import { Box, Button, InputText, Flex, Text } from 'ui';
-import { sdk } from 'sdk';
 
+import { init } from '../../src/lib/sdk.server';
 import { Field } from '../../src/components/Field';
+import { cookie } from '../../src/lib/auth.server';
 
 export async function action({ request }: ActionFunctionArgs) {
-  const { default: config } = await import('~studio.config.js');
   const formData = await request.formData();
-
-  await sdk.init(config);
+  const sdk = await init();
 
   try {
-    await sdk.login(formData);
+    const token = await sdk.login(formData);
 
-    // set auth cookie
-
-    return redirect('/admin/');
+    return redirect('/admin/', {
+      headers: {
+        'Set-Cookie': await cookie.serialize(token)
+      }
+    });
   } catch (error) {
-    return json({ errors: [error.message] });
+    return json({ errors: error.errors.reduce((acc, error) => {
+      acc[error.path[0]] = error.message;
+      return acc;
+    }, {}) }, 400);
   }
 }
 
@@ -48,11 +52,12 @@ export default function Login() {
               Please enter a valid email address.
             </Field.Description>
             <InputText name="email" id="email" />
-            <Field.Error>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua.
-            </Field.Error>
+
+            {actionData?.errors?.email && (
+              <Field.Error>
+                {actionData.errors.email}
+              </Field.Error>
+            )}
           </Field.Root>
 
           <Field.Root direction="column" gap={1}>
@@ -61,6 +66,12 @@ export default function Login() {
               Please enter a valid email address.
             </Field.Description>
             <InputText type="password" name="password" id="password" />
+
+            {actionData?.errors?.password && (
+              <Field.Error>
+                {actionData.errors.password}
+              </Field.Error>
+            )}
           </Field.Root>
 
           <Box asChild display="block">

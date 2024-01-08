@@ -1,11 +1,11 @@
 import { Outlet } from '@remix-run/react';
 
-import { Flex } from 'ui';
+import { Page } from '../../src/routes/auth/components/Page';
 
 export default function AuthLayout() {
   return (
-    <Flex alignItems="center" justifyContent="center">
+    <Page>
       <Outlet />
-    </Flex>
+    </Page>
   );
 }

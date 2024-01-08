@@ -1,13 +1,14 @@
-import { Outlet, useLoaderData } from '@remix-run/react';
-import { Button, InputText, Popover } from 'ui';
-// import { sdk } from 'sdk';
+import { Link, Outlet, useLoaderData } from '@remix-run/react';
+
+import { init } from '../../src/lib/sdk.server';
+import { requireAuth } from '../../src/lib/auth.server';
 
 export async function loader({ params, request }) {
-  const { default: config } = await import('~studio.config.js');
+  await requireAuth(request);
 
-  // await sdk.init(config);
+  const sdk = await init();
 
-  // const data = await sdk.find();
+  await sdk.find()
 
   return { data: [] };
 }
@@ -19,21 +20,7 @@ export default function AdminLayout() {
     <>
       <h1>ADMIN</h1>
 
-      <Button>text</Button>
-      <Button>text</Button>
-
-      <Popover.Root>
-        <Popover.Trigger>Toggle</Popover.Trigger>
-        <Popover.Portal>Hello world!</Popover.Portal>
-      </Popover.Root>
-
-      <InputText />
-
-      {data.map(({ id, title }) => (
-        <p>
-          {id} {title}
-        </p>
-      ))}
+      <Link to="/auth/logout">Logout</Link>
 
       <Outlet />
     </>

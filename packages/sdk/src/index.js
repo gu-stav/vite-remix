@@ -1,4 +1,5 @@
 import pino from 'pino';
+import { z } from 'zod';
 
 import { validate } from './config/validate';
 
@@ -52,8 +53,29 @@ class SDK {
     const doc = await this.db.delete();
   }
 
-  async login() {
-    throw new Error('Invalid user');
+  async login(payload) {
+    // throw new Error('Invalid user');
+    let data = {};
+
+    if (payload instanceof FormData) {
+      data = {
+        email: payload.get('email'),
+        password: payload.get('password'),
+      }
+    } else if (typeof payload === 'object') {
+      data = payload;
+    }
+
+    const userSchema = z.object({
+      email: z.string().email(),
+      password: z.string().min(1)
+    }).strict();
+
+    userSchema.parse(data);
+
+    return {
+      token: 'something'
+    }
   }
 }
 
