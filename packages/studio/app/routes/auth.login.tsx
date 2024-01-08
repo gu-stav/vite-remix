@@ -5,7 +5,7 @@ import type { ActionFunctionArgs } from '@remix-run/node';
 import { Box, Button, InputText, Flex, Text } from 'ui';
 import { sdk } from 'sdk';
 
-import { Field } from '../../../src/components/Field';
+import { Field } from '../../src/components/Field';
 
 export async function action({ request }: ActionFunctionArgs) {
   const { default: config } = await import('~studio.config.js');

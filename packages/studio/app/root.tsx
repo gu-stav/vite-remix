@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 
-import 'unding-studio-remix/styles';
+import 'ui/style.css';
 
 export default function App() {
   return (
