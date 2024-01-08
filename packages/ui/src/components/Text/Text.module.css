@@ -59,6 +59,68 @@
   color: var(--color-success-700);
 }
 
+/* font-size */
+
+.size0 {
+  font-size: var(--font-size-0);
+}
+
+.size1 {
+  font-size: var(--font-size-1);
+}
+
+.size2 {
+  font-size: var(--font-size-2);
+}
+
+.size3 {
+  font-size: var(--font-size-3);
+}
+
+.size4 {
+  font-size: var(--font-size-4);
+}
+
+.size5 {
+  font-size: var(--font-size-5);
+}
+
+.size6 {
+  font-size: var(--font-size-6);
+}
+
+.size7 {
+  font-size: var(--font-size-7);
+}
+
+/* font-weight */
+
+.weightBold {
+  font-weight: var(--font-weight-bold);
+}
+
+.weightNormal {
+  font-weight: var(--font-weight-normal);
+}
+
+/* line-height */
+
+.lineHeight0 {
+  line-height: var(--line-height-0);
+}
+
+.lineHeight1 {
+  line-height: var(--line-height-1);
+}
+
+.lineHeight2 {
+  line-height: var(--line-height-2);
+}
+
+.lineHeight3 {
+  line-height: var(--line-height-3);
+}
+
 /* text-align */
 
 .alignCenter {

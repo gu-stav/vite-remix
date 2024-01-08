@@ -18,5 +18,10 @@
     "types": ["vite/client"],
     "baseUrl": "."
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "../studio/src/components/Field",
+    "../studio/src/components/Label",
+    "../studio/src/components/Badge"
+  ]
 }

@@ -11,33 +11,42 @@ export interface BoxProps {
   asChild?: boolean;
   children: React.ReactNode;
   backgroundColor?: Colors;
+  borderRadius?: 1;
   className?: string;
-  display?: React.CSSProperties['display'];
-
+  cursor?: 'pointer';
+  display?: 'block' | 'inline' | 'inline-block';
   flexGrow?: 0 | 1;
   flexShrink?: 0 | 1;
-
   marginBlock?: Spaces;
   marginBlockEnd?: Spaces;
   marginBlockStart?: Spaces;
   marginInline?: Spaces;
   marginInlineEnd?: Spaces;
   marginInlineStart?: Spaces;
-
   paddingBlock?: Spaces;
   paddingBlockEnd?: Spaces;
   paddingBlockStart?: Spaces;
   paddingInline?: Spaces;
   paddingInlineEnd?: Spaces;
   paddingInlineStart?: Spaces;
-
+  width?:
+    | 'auto'
+    | 25
+    | 50
+    | 75
+    | 100
+    | 'fit-content'
+    | 'max-content'
+    | 'min-content';
   zIndex?: 'page' | 'sticky' | 'popover' | 'dialog';
 }
 
 export function Box({
   asChild,
   backgroundColor,
+  borderRadius,
   children,
+  cursor,
   display,
   className,
   flexGrow,
@@ -54,7 +63,9 @@ export function Box({
   paddingInline,
   paddingInlineEnd,
   paddingInlineStart,
+  width,
   zIndex,
+  ...props
 }: BoxProps) {
   const Tag = asChild ? Slot : 'div';
 
@@ -62,34 +73,28 @@ export function Box({
     <Tag
       className={clsx(
         variableProp(backgroundColor, 'backgroundColor', styles),
-
-        display === 'block' && styles.displayBlock,
-        display === 'inline' && styles.displayInline,
-        display === 'inline-block' && styles.displayInlineBlock,
-
+        variableProp(borderRadius, 'borderRadius', styles),
+        variableProp(cursor, 'cursor', styles),
+        variableProp(display, 'display', styles),
         variableProp(flexGrow, 'flexGrow', styles),
         variableProp(flexShrink, 'flexShrink', styles),
-
         variableProp(marginBlock, 'marginBlock', styles),
         variableProp(marginBlockEnd, 'marginBlockEnd', styles),
         variableProp(marginBlockStart, 'marginBlockStart', styles),
-
         variableProp(marginInline, 'marginInline', styles),
         variableProp(marginInlineEnd, 'marginInlineEnd', styles),
         variableProp(marginInlineStart, 'marginInlineStart', styles),
-
         variableProp(paddingBlock, 'paddingBlock', styles),
         variableProp(paddingBlockEnd, 'paddingBlockEnd', styles),
         variableProp(paddingBlockStart, 'paddingBlockStart', styles),
-
         variableProp(paddingInline, 'paddingInline', styles),
         variableProp(paddingInlineEnd, 'paddingInlineEnd', styles),
         variableProp(paddingInlineStart, 'paddingInlineStart', styles),
-
+        variableProp(width, 'width', styles),
         variableProp(zIndex, 'z', styles),
-
         className,
       )}
+      {...props}
     >
       {children}
     </Tag>

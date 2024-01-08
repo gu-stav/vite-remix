@@ -1,9 +1,11 @@
 import { json, redirect } from '@remix-run/node';
 import { Form, Link, useActionData } from '@remix-run/react';
-import type { ActionFunctionArgs } from "@remix-run/node";
+import type { ActionFunctionArgs } from '@remix-run/node';
 
-import { Box, Button, Label, InputText, Flex, Text } from 'ui';
+import { Box, Button, InputText, Flex, Text } from 'ui';
 import { sdk } from 'sdk';
+
+import { Field } from '../../src/components/Field';
 
 export async function action({ request }: ActionFunctionArgs) {
   const { default: config } = await import('~studio.config.js');
@@ -17,8 +19,8 @@ export async function action({ request }: ActionFunctionArgs) {
     // set auth cookie
 
     return redirect('/admin/');
-  } catch(error) {
-    return json({ errors: [error] });
+  } catch (error) {
+    return json({ errors: [error.message] });
   }
 }
 
@@ -30,22 +32,36 @@ export default function Login() {
   const actionData = useActionData<typeof action>();
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" gap={4}>
       <Text asChild>
         <h1>Login</h1>
       </Text>
 
-      <Flex asChild direction="column" gap={1}>
+      <Flex asChild direction="column" gap={4}>
         <Form method="post">
-          <Flex direction="column" gap={1}>
-            <Label htmlFor="email">Email Address</Label>
+          <Field.Root direction="column" gap={1}>
+            <Field.Title>
+              Email Address
+              <Field.Required>Required</Field.Required>
+            </Field.Title>
+            <Field.Description>
+              Please enter a valid email address.
+            </Field.Description>
             <InputText name="email" id="email" />
-          </Flex>
+            <Field.Error>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+              erat, sed diam voluptua.
+            </Field.Error>
+          </Field.Root>
 
-          <Flex direction="column" gap={1}>
-            <Label htmlFor="password">Password</Label>
+          <Field.Root direction="column" gap={1}>
+            <Field.Title>Password</Field.Title>
+            <Field.Description>
+              Please enter a valid email address.
+            </Field.Description>
             <InputText type="password" name="password" id="password" />
-          </Flex>
+          </Field.Root>
 
           <Box asChild display="block">
             <Link to="/auth/forgot-password">Forgot password?</Link>

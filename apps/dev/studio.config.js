@@ -1,5 +1,5 @@
 import { defineConfig } from 'unding-studio-remix/config';
-// import postgres from 'database-postgres';
+import postgres from 'database-postgres';
 
 import { updatedAt } from './src/plugins/updatedAt';
 
@@ -16,9 +16,9 @@ export default defineConfig({
     },
   ],
 
-  // db: postgres({
-  //     connectionString: process.env.DB_CONNECTION
-  // }),
+  db: postgres({
+    connectionString: process.env.DB_CONNECTION,
+  }),
 
   plugins: [updatedAt()],
 });

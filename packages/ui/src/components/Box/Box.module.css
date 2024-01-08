@@ -44,6 +44,10 @@
   background-color: var(--color-primary-950);
 }
 
+.backgroundColorError100 {
+  background-color: var(--color-error-100);
+}
+
 .backgroundColorError600 {
   background-color: var(--color-error-600);
 }
@@ -58,6 +62,18 @@
 
 .backgroundColorSuccess700 {
   background-color: var(--color-success-700);
+}
+
+/* border-radius */
+
+.borderRadius1 {
+  border-radius: var(--border-radius-1);
+}
+
+/* cursor */
+
+.cursorPointer {
+  cursor: pointer;
 }
 
 /* display */
@@ -632,6 +648,40 @@
 
 .paddingInlineStart10 {
   padding-inline-start: var(--space-10);
+}
+
+/* width */
+
+.widthAuto {
+  width: auto;
+}
+
+.width25 {
+  width: 25%;
+}
+
+.width50 {
+  width: 50%;
+}
+
+.width75 {
+  width: 75%;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.widthFitContent {
+  width: fit-content;
+}
+
+.widthMaxContent {
+  width: max-content;
+}
+
+.widthMinContent {
+  width: min-content;
 }
 
 /* z-index */

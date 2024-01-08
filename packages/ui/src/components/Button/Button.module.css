@@ -1,0 +1,25 @@
+.base {
+  background-color: var(--color-primary-700);
+  border: 1px solid var(--color-primary-850);
+  outline: none;
+  position: relative;
+}
+
+.base::after {
+  border: 0.2rem solid transparent;
+  border-radius: var(--border-radius-1);
+  content: '';
+  inset: -0.4rem;
+  position: absolute;
+  transition-property: border-color;
+  transition-duration: 0.2s;
+}
+
+.base:focus-visible::after {
+  border-color: var(--color-primary-600);
+}
+
+.base:hover {
+  background-color: var(--color-primary-800);
+  border-color: var(--color-primary-950);
+}

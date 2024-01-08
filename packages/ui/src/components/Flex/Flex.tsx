@@ -15,7 +15,7 @@ export interface FlexProps extends BoxProps {
   alignItems?: FlexDirectionValues;
   direction?: 'column' | 'row';
   gap?: Spaces;
-  justifyContent?: FlexDirectionValues;
+  justifyContent?: FlexDirectionValues | 'space-between';
 }
 
 export function Flex({

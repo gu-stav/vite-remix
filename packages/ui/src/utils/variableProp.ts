@@ -1,17 +1,23 @@
 function capitalize([first, ...rest]) {
-    return first.toUpperCase() + rest.join('').toLowerCase();
-  }
+  return first.toUpperCase() + rest.join('').toLowerCase();
+}
 
 export function variableProp(variable, variableName, styles): string | false {
-    if (variable === undefined || variable === null) {
-        return false;
-    }
+  if (variable === undefined || variable === null) {
+    return false;
+  }
 
-    let normalizedVariable = variable;
+  let normalizedVariable = variable;
 
-    if (typeof normalizedVariable === 'string') {
-        normalizedVariable = capitalize(variable);
-    }
+  if (typeof normalizedVariable === 'string') {
+    normalizedVariable = capitalize(variable);
 
-    return styles?.[`${variableName}${normalizedVariable}`] ?? false;
+    // TODO: this could be one replacement
+    normalizedVariable = normalizedVariable.replace(/(^|[\s-])\S/g, (match) =>
+      match.toUpperCase(),
+    );
+    normalizedVariable = normalizedVariable.replace('-', '');
+  }
+
+  return styles?.[`${variableName}${normalizedVariable}`] ?? false;
 }

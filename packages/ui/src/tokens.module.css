@@ -1,4 +1,8 @@
 :global(:root) {
+  /* Border-radius */
+
+  --border-radius-1: 0.4rem;
+
   /* Colors */
   --color-primary-50: #fafafa;
   --color-primary-100: #f4f4f5;
@@ -12,10 +16,13 @@
   --color-primary-900: #18181b;
   --color-primary-950: #09090b;
 
-
   /*
   --color-error-50: #fef2f2;
-  --color-error-100: #fee2e2
+
+  */
+  --color-error-100: #fee2e2;
+
+  /*
   --color-error-200: #fecaca;
   --color-error-300: #fca5a5;
   --color-error-400: #f87171;
@@ -28,7 +35,6 @@
   --color-error-900: #7f1d1d;
   --color-error-950: #450a0a;
   */
-
 
   /*
   --color-success-50: #ecfdf5;
@@ -45,6 +51,30 @@
   --color-success-900: #064e3b;
   --color-success-950: #022c22;
   */
+
+  /* Font-size */
+
+  --font-size-0: 1rem;
+  --font-size-1: 1.2rem;
+  --font-size-2: 1.4rem;
+  --font-size-3: 1.6rem;
+  --font-size-4: 1.8rem;
+  --font-size-5: 2rem;
+  --font-size-6: 2.4rem;
+  --font-size-7: 3rem;
+
+  /* Font-weight */
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 600;
+
+  /* Line-height */
+
+  --line-height-0: 1;
+  --line-height-1: 1.25;
+  --line-height-2: 1.375;
+  --line-height-3: 1.5;
 
   /* Spacing - based on the magic number 0.4rem. */
 

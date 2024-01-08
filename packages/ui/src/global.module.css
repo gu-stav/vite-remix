@@ -19,3 +19,7 @@
 :global(*::after) {
   box-sizing: border-box;
 }
+
+:global(a) {
+  color: inherit;
+}

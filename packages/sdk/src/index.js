@@ -51,6 +51,10 @@ class SDK {
   async delete() {
     const doc = await this.db.delete();
   }
+
+  async login() {
+    throw new Error('Invalid user');
+  }
 }
 
 export const sdk = new SDK();
