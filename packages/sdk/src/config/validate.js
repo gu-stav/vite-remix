@@ -10,7 +10,7 @@ const accessControlSchema = z.object({
 const fieldSchema = z.object({
   access: z.optional(accessControlSchema),
   name: z.string(),
-  type: z.enum(['text', 'date']),
+  type: z.enum(['text', 'date', 'password']),
   validate: z.optional(z.function()),
 });
 

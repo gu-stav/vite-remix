@@ -3,6 +3,8 @@ import pino from 'pino';
 import { validate } from './config/validate';
 import { find, login } from './contentTypes/index';
 
+export * as errors from './errors/index';
+
 class SDK {
   async init(config) {
     this.config = config;
@@ -38,10 +40,7 @@ class SDK {
   }
 
   async find(payload) {
-    return await find({
-      ...payload,
-      sdk: this,
-    });
+    return await find.bind(this)(payload);
   }
 
   async findById() {
@@ -53,7 +52,7 @@ class SDK {
   }
 
   async login(payload) {
-    return await login.bind(this, payload)();
+    return await login.bind(this)(payload);
   }
 }
 

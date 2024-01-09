@@ -1,6 +1,7 @@
 import { json, redirect } from '@remix-run/node';
 import { Form, Link, useActionData } from '@remix-run/react';
 import type { ActionFunctionArgs } from '@remix-run/node';
+import { errors } from 'sdk';
 
 import { Box, Button, InputText, Flex, Text } from 'ui';
 
@@ -13,7 +14,9 @@ export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
 
   try {
-    const token = await sdk.login({
+    const {
+      data: { token },
+    } = await sdk.login({
       data: {
         email: formData.get('email'),
         password: formData.get('password'),
@@ -26,15 +29,22 @@ export async function action({ request }: ActionFunctionArgs) {
       },
     });
   } catch (error) {
-    return json(
-      {
-        errors: error.errors.reduce((acc, error) => {
-          acc[error.path[0]] = error.message;
-          return acc;
-        }, {}),
-      },
-      400,
-    );
+    if (error instanceof errors.ValidationError) {
+      return json(
+        {
+          errors: Object.entries(error.issues).reduce(
+            (acc, [fieldName, error]) => {
+              acc[fieldName] = error?._errors?.[0];
+              return acc;
+            },
+            {},
+          ),
+        },
+        400,
+      );
+    }
+
+    return null;
   }
 }
 

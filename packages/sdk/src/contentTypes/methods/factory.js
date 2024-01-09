@@ -1,28 +1,36 @@
-import { z } from 'zod';
+import { z, ZodError } from 'zod';
 
-const schema = z
-  .object({
-    contentType: z.string(),
-    data: z.object().optional(),
-  })
-  .strict();
+import { ValidationError } from '../../errors';
 
-function validatePayload(payload) {
-  try {
-    schema.validate(payload);
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
-
-export function factory(callback) {
+export function factory(callback, options = { schema: null }) {
   return async function (payload) {
     try {
-      validatePayload(payload);
-      return await callback.bind(this)(payload);
+      // validate data payload schema
+      if (options?.schema && payload?.data) {
+        try {
+          options.schema.parse(payload.data);
+        } catch (error) {
+          throw new ValidationError('', error.format());
+        }
+      }
+
+      return {
+        data: await callback.bind(this)({
+          ...payload,
+
+          // populate the contentType
+          contentType: payload?.contentType
+            ? this.config.contentTypes.find(
+                (contentType) => contentType.slug === payload.contentType,
+              )
+            : undefined,
+        }),
+      };
     } catch (error) {
       this.logger.error(error.message);
+
+      console.log('got error', error);
+
       throw error;
     }
   };
