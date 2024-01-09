@@ -17,12 +17,12 @@ function validatePayload(payload) {
 }
 
 export function factory(callback) {
-  return function ({ sdk, ...payload }) {
+  return async function (payload) {
     try {
       validatePayload(payload);
-      return callback(payload);
+      return await callback.bind(this)(payload);
     } catch (error) {
-      sdk.logger.error(error.message);
+      this.logger.error(error.message);
       throw error;
     }
   };

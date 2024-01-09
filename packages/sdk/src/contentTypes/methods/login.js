@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 import { factory } from './factory';
 
-export const login = factory(({ data }) => {
+export const login = factory(async function ({ data }) {
   const userSchema = z
     .object({
       email: z.string().email(),

@@ -1,7 +1,7 @@
 import pino from 'pino';
 
 import { validate } from './config/validate';
-import { login } from './contentTypes/index';
+import { find, login } from './contentTypes/index';
 
 class SDK {
   async init(config) {
@@ -37,12 +37,11 @@ class SDK {
     return doc;
   }
 
-  async find() {
-    this.logger.info('This is a logger message from find');
-
-    const doc = await this.db.find();
-
-    return doc;
+  async find(payload) {
+    return await find({
+      ...payload,
+      sdk: this,
+    });
   }
 
   async findById() {
@@ -54,10 +53,7 @@ class SDK {
   }
 
   async login(payload) {
-    return await login({
-      ...payload,
-      sdk: this,
-    });
+    return await login.bind(this, payload)();
   }
 }
 
