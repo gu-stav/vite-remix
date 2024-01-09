@@ -1,7 +1,7 @@
 import pino from 'pino';
-import { z } from 'zod';
 
 import { validate } from './config/validate';
+import { login } from './contentTypes/index';
 
 class SDK {
   async init(config) {
@@ -53,19 +53,11 @@ class SDK {
     const doc = await this.db.delete();
   }
 
-  async login({ data }) {
-    const userSchema = z
-      .object({
-        email: z.string().email(),
-        password: z.string().min(1),
-      })
-      .strict();
-
-    userSchema.parse(data);
-
-    return {
-      token: 'something',
-    };
+  async login(payload) {
+    return await login({
+      ...payload,
+      sdk: this,
+    });
   }
 }
 
