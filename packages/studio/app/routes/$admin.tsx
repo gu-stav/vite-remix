@@ -8,11 +8,9 @@ export async function loader({ params, request }) {
 
   const sdk = await init();
 
-  const { data } = await sdk.find({
+  return await sdk.find({
     contentType: '_users',
   });
-
-  return { data };
 }
 
 export default function AdminLayout() {

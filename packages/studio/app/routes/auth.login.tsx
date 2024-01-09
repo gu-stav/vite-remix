@@ -8,6 +8,7 @@ import { Box, Button, InputText, Flex, Text } from 'ui';
 import { init } from '../../src/lib/sdk.server';
 import { Field } from '../../src/components/Field';
 import { cookie } from '../../src/lib/auth.server';
+import { handleValidationError } from '../../src/lib/errors';
 
 export async function action({ request }: ActionFunctionArgs) {
   const sdk = await init();
@@ -30,18 +31,7 @@ export async function action({ request }: ActionFunctionArgs) {
     });
   } catch (error) {
     if (error instanceof errors.ValidationError) {
-      return json(
-        {
-          errors: Object.entries(error.issues).reduce(
-            (acc, [fieldName, error]) => {
-              acc[fieldName] = error?._errors?.[0];
-              return acc;
-            },
-            {},
-          ),
-        },
-        400,
-      );
+      return json({ errors: handleValidationError(error) }, 400);
     }
 
     return null;

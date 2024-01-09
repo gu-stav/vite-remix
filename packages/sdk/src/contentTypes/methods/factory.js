@@ -1,5 +1,3 @@
-import { z, ZodError } from 'zod';
-
 import { ValidationError } from '../../errors';
 
 export function factory(callback, options = { schema: null }) {
@@ -28,9 +26,6 @@ export function factory(callback, options = { schema: null }) {
       };
     } catch (error) {
       this.logger.error(error.message);
-
-      console.log('got error', error);
-
       throw error;
     }
   };

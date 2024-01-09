@@ -18,5 +18,11 @@ export function defineConfig(config = {}) {
     ],
   });
 
+  config.contentTypes.forEach((contentType) => {
+    if (!contentType.access) {
+      contentType.access = {};
+    }
+  });
+
   return config;
 }
