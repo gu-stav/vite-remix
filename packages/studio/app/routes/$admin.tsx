@@ -1,4 +1,5 @@
 import { Link, Outlet, useLoaderData } from '@remix-run/react';
+import { FormattedMessage } from 'react-intl';
 
 import { init } from '../../src/lib/sdk.server';
 import { requireAuth } from '../../src/lib/auth.server';
@@ -18,7 +19,9 @@ export default function AdminLayout() {
 
   return (
     <>
-      <h1>ADMIN</h1>
+      <h1>
+        <FormattedMessage id="test" defaultMessage="Admin" />
+      </h1>
 
       <Link to="/auth/logout">Logout</Link>
 

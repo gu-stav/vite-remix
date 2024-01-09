@@ -22,6 +22,7 @@ export async function action({ request }: ActionFunctionArgs) {
         email: formData.get('email'),
         password: formData.get('password'),
       },
+      request,
     });
 
     return redirect('/admin/', {

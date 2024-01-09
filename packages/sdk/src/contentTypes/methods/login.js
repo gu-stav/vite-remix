@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { factory } from './factory';
 
 export const login = factory(
-  async function ({ data }) {
+  async function ({ data, request }) {
     return {
       token: 'something',
     };
