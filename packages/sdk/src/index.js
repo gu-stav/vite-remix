@@ -57,3 +57,4 @@ class SDK {
 }
 
 export const sdk = new SDK();
+export * from './database/index';

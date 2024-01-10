@@ -56,6 +56,10 @@ importers:
       zod:
         specifier: ^3.22.4
         version: 3.22.4
+    devDependencies:
+      sdk:
+        specifier: workspace:^
+        version: link:../sdk
 
   packages/sdk:
     dependencies:

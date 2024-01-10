@@ -1,5 +1,22 @@
+import { DatabaseAdapter } from 'sdk';
+
 import { validate } from './config/validate';
 import { connect } from './connect';
+
+class DatabaseAdapterPostgres extends DatabaseAdapter {
+  async connect() {
+    await connect();
+  }
+
+  async find() {
+    return [
+      {
+        id: 1,
+        title: 'test',
+      },
+    ];
+  }
+}
 
 export default function setupDbAdapter(config) {
   try {
@@ -8,22 +25,11 @@ export default function setupDbAdapter(config) {
     throw new Error('Could not validate db adapter config');
   }
 
-  return ({ sdk }) => {
-    return {
-      async connect() {
-        return connect({ sdk, config });
-      },
-      async create() {},
-      async find() {
-        return [
-          {
-            id: 1,
-            title: 'test',
-          },
-        ];
-      },
-      async update() {},
-      async delete() {},
-    };
+  return async ({ sdk }) => {
+    const adapter = new DatabaseAdapterPostgres({ sdk });
+
+    await adapter.connect();
+
+    return adapter;
   };
 }
