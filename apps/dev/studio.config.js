@@ -21,4 +21,6 @@ export default defineConfig({
   }),
 
   plugins: [updatedAt()],
+
+  secret: 'my_secret',
 });

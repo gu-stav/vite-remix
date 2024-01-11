@@ -31,6 +31,7 @@ const schema = z
     contentTypes: z.array(contentTypeSchema).nonempty(),
     db: z.function(),
     plugins: z.optional(z.array(z.function())),
+    secret: z.string().min(1),
   })
   .strict();
 
