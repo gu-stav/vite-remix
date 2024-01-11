@@ -9,7 +9,10 @@ const accessControlSchema = z.object({
 
 const fieldSchema = z.object({
   access: z.optional(accessControlSchema),
-  name: z.string(),
+  name: z
+    .string()
+    // disallow names starting with an underscore
+    .regex(/^(?!_).*$/),
   type: z.enum(['text', 'date', 'password']),
   validate: z.optional(z.function()),
 });
@@ -17,7 +20,10 @@ const fieldSchema = z.object({
 const contentTypeSchema = z.object({
   access: z.optional(accessControlSchema),
   attributes: z.array(fieldSchema).nonempty(),
-  slug: z.string(),
+  slug: z
+    .string()
+    // disallow names starting with an underscore
+    .regex(/^(?!_).*$/),
 });
 
 const schema = z
