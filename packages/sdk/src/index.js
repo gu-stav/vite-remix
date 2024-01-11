@@ -8,8 +8,8 @@ export * as errors from './errors/index';
 class SDK {
   async init(config) {
     this.config = config;
-    this.db = this.config.db({ sdk: this });
     this.logger = pino();
+    this.db = await this.config.db({ sdk: this });
 
     // initialize plugins
     if (this.config.plugins) {
@@ -25,8 +25,6 @@ class SDK {
     } catch (error) {
       throw error;
     }
-
-    await this.db.connect();
   }
 
   async create({ contentType, data }) {

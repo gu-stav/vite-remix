@@ -3,10 +3,10 @@ import prompts from 'prompts';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
-export async function connect({ config }) {
+export async function connect(config, schemas) {
   const { connectionString } = config;
   const dbClient = postgres(connectionString);
-  const client = drizzle(dbClient);
+  const client = drizzle(dbClient, { schema: schemas });
 
   // const { apply, hasDataLoss, warnings } = await pushSchema(schema, client);
 
@@ -41,4 +41,6 @@ export async function connect({ config }) {
 
   //   await apply();
   // }
+
+  return client;
 }

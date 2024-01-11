@@ -1,6 +1,12 @@
 export class DatabaseAdapter {
-  constructor({ sdk }) {
+  constructor({ config, sdk }) {
+    this.config = config;
     this.sdk = sdk;
+    this.schemas = {};
+  }
+
+  createContentTypeSchema(contentTypeName, schema) {
+    this.schemas[contentTypeName] = schema;
   }
 
   async connect() {
