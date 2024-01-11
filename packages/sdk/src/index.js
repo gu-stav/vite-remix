@@ -62,3 +62,4 @@ class SDK {
 
 export const sdk = new SDK();
 export * from './database/index';
+export { defineConfig } from './config/define';

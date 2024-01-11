@@ -8,7 +8,9 @@
     "lint": "pnpm run --if-present --parallel -r lint",
     "lint:fix": "pnpm run --if-present --parallel -r lint:fix",
     "prettier": "prettier . --write",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "pnpm run --if-present --parallel -r test",
+    "test:watch": "pnpm run --if-present --parallel -r test:watch"
   },
   "engines": {
     "node": ">=18.0.0"
