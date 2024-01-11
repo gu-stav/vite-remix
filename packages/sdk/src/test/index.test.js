@@ -6,11 +6,16 @@ import { sdk } from '../index';
 const CONFIG_VALID = {
   contentTypes: [
     {
-      slug: 'content',
+      slug: '_users',
       attributes: [
         {
-          name: 'title',
+          name: 'email',
           type: 'text',
+        },
+
+        {
+          name: 'password',
+          type: 'password',
         },
       ],
     },
@@ -70,7 +75,7 @@ describe('sdk', () => {
       }),
     );
 
-    expect(sdk.config.contentTypes.length).toBe(3);
+    expect(sdk.config.contentTypes.length).toBe(2);
     expect(sdk.config.contentTypes.at(-1)).toMatchInlineSnapshot(`
       {
         "attributes": [
