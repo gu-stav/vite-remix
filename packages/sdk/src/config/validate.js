@@ -9,10 +9,9 @@ const accessControlSchema = z.object({
 
 const fieldSchema = z.object({
   access: z.optional(accessControlSchema),
-  name: z
-    .string()
-    // disallow names starting with an underscore
-    .regex(/^(?!_).*$/),
+  name: z.string().refine((val) => !val.startsWith('_'), {
+    message: 'Field name can not start with underscores',
+  }),
   type: z.enum(['text', 'date', 'password']),
   validate: z.optional(z.function()),
 });
@@ -22,8 +21,9 @@ const contentTypeSchema = z.object({
   attributes: z.array(fieldSchema).nonempty(),
   slug: z
     .string()
-    // disallow names starting with an underscore
-    .regex(/^(?!_).*$/),
+    .refine((val) => ['_users'].includes(val) || !val.startsWith('_'), {
+      message: 'Content-type slug can not start with underscores',
+    }),
 });
 
 const schema = z
