@@ -20,7 +20,7 @@ const CONFIG_VALID = {
 };
 
 describe('sdk', () => {
-  test('invalid config', async () => {
+  test('invalid config (empty)', async () => {
     await expect(sdk.init(defineConfig())).rejects.toThrow();
   });
 
