@@ -1,5 +1,5 @@
 import { DatabaseAdapter } from 'sdk';
-import { pgTable, serial, varchar } from 'drizzle-orm/pg-core';
+import { date, pgTable, serial, varchar } from 'drizzle-orm/pg-core';
 
 import { validate } from './config/validate';
 import { connect } from './connect';
@@ -20,7 +20,8 @@ class DatabaseAdapterPostgres extends DatabaseAdapter {
       }
 
       const schema = pgTable(contentType.slug, {
-        id: serial('id'),
+        createdAt: date('date', { mode: 'date' }),
+        updatedAt: date('date', { mode: 'date' }),
 
         ...contentType.attributes.reduce((acc, attribute) => {
           switch (attribute.type) {
@@ -31,6 +32,8 @@ class DatabaseAdapterPostgres extends DatabaseAdapter {
 
           return acc;
         }, {}),
+
+        id: serial('id'),
       });
 
       this.createContentTypeSchema(contentType.slug, schema);
