@@ -6,6 +6,10 @@ import { find, login } from './contentTypes/index';
 export * as errors from './errors/index';
 
 class SDK {
+  constructor() {
+    this.initialized = false;
+  }
+
   async init(config) {
     this.config = config;
     this.logger = pino();
@@ -25,6 +29,8 @@ class SDK {
     } catch (error) {
       throw error;
     }
+
+    this.initialized = true;
   }
 
   async create({ contentType, data }) {
