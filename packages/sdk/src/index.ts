@@ -3,18 +3,11 @@ import type { Logger } from 'pino';
 
 import { validate } from './config/validate';
 import { find, login } from './contentTypes/index';
+import type { DatabaseAdapter } from './database/index';
 
 export * as errors from './errors/index';
 
 type Plugin = (config?: Config) => Config;
-
-interface Db {
-  connect: () => Promise<void>;
-  create: () => Promise<void>;
-  find: () => Promise<void>;
-  update: () => Promise<void>;
-  delete: () => Promise<void>;
-}
 
 interface Attribute {}
 
@@ -30,13 +23,13 @@ interface ContentType {
 
 export interface Config {
   contentTypes: ContentType[];
-  db?: (config?: { sdk: SDK }) => Db;
+  db?: (config: { sdk: SDK }) => Promise<DatabaseAdapter>;
   plugins?: Plugin[];
 }
 
 export class SDK {
   config: Config;
-  db: Db;
+  db: DatabaseAdapter;
   initialized: boolean;
   logger: Logger;
 
