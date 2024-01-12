@@ -19,13 +19,11 @@
     "rootDir": "." /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "sourceMap": true,
-    "strict": false /* Enable all strict type-checking options. */,
+    "strict": false /* Enable all strict type-checking options. */
   },
   "exclude": ["dist", "build", "node_modules"],
   "include": [],
   "files": [],
   "composite": true,
-  "references": [
-    { "path": "./packages/sdk" },
-  ]
+  "references": [{ "path": "./packages/sdk" }]
 }

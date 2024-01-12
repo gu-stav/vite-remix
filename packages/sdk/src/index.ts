@@ -9,9 +9,19 @@ export * as errors from './errors/index';
 
 type Plugin = (config?: Config) => Config;
 
-interface Attribute {}
+interface Attribute {
+  name: string;
+  required?: boolean;
+  type: 'text';
+}
 
-interface ContentType {
+export type GeneratedTypes = {
+  contentTypes: {
+    [slug: string]: Record<string, unknown>;
+  };
+};
+
+export interface ContentType {
   access?: {
     create?: () => boolean;
     delete?: () => boolean;
@@ -90,3 +100,4 @@ export class SDK {
 export const sdk = new SDK();
 export * from './database/index';
 export { defineConfig } from './config/define';
+export { generateTypes } from './types/generateTypes';

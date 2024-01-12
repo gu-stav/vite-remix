@@ -1,6 +1,18 @@
+import type { ZodSchema } from 'zod';
+
 import { ValidationError } from '../../errors';
 
-export function factory(callback, options = { schema: null }) {
+import type { ContentType } from '../../index';
+
+export function factory(
+  callback: (callbackPayload: {
+    contentType: ContentType | undefined;
+    data: object;
+    request: unknown;
+    where: {};
+  }) => Promise<object>,
+  options: { schema: ZodSchema } = { schema: null },
+) {
   return async function (payload) {
     try {
       // validate data payload schema

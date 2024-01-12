@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "json-schema": "^0.4.0",
+    "json-schema-to-typescript": "^13.1.1",
     "pino": "^8.17.2",
     "zod": "^3.22.4"
   },
