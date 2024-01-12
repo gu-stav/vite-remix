@@ -6,19 +6,32 @@ import { find, login } from './contentTypes/index';
 
 export * as errors from './errors/index';
 
-type Plugin = (config: Config) => Config;
+type Plugin = (config?: Config) => Config;
 
 interface Db {
-  connect: () => void;
-  create: () => void;
-  find: () => void;
-  update: () => void;
-  delete: () => void;
+  connect: () => Promise<void>;
+  create: () => Promise<void>;
+  find: () => Promise<void>;
+  update: () => Promise<void>;
+  delete: () => Promise<void>;
+}
+
+interface Attribute {}
+
+interface ContentType {
+  access?: {
+    create?: () => boolean;
+    delete?: () => boolean;
+    find?: () => boolean;
+  };
+  attributes: Attribute[];
+  slug: string;
 }
 
 export interface Config {
-  db: (config: { sdk: SDK }) => Db;
-  plugins: Plugin[];
+  contentTypes: ContentType[];
+  db?: (config?: { sdk: SDK }) => Db;
+  plugins?: Plugin[];
 }
 
 export class SDK {

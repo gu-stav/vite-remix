@@ -1,4 +1,6 @@
-export function defineConfig(config = {}) {
+import type { Config } from '../index';
+
+export function defineConfig(config: Config = { contentTypes: [], db: null }) {
   if (!config?.contentTypes) {
     config.contentTypes = [];
   }

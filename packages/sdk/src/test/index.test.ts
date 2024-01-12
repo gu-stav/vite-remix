@@ -20,7 +20,13 @@ const CONFIG_VALID = {
       ],
     },
   ],
-  db: () => () => {},
+  db: () => () => ({
+    async connect() {},
+    async find() {},
+    async create() {},
+    async delete() {},
+    async update() {},
+  }),
   secret: 'secret',
 };
 
@@ -32,6 +38,7 @@ describe('sdk', () => {
   test('user defined content-type slugs can not start with an underscore', async () => {
     await expect(
       sdk.init(
+        // @ts-expect-error
         defineConfig({
           ...CONFIG_VALID,
           contentTypes: [
@@ -69,6 +76,7 @@ describe('sdk', () => {
     });
 
     await sdk.init(
+      // @ts-expect-error
       defineConfig({
         ...CONFIG_VALID,
         plugins: [testPlugin()],
