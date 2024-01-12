@@ -1,16 +1,37 @@
 import pino from 'pino';
+import type { Logger } from 'pino';
 
 import { validate } from './config/validate';
 import { find, login } from './contentTypes/index';
 
 export * as errors from './errors/index';
 
-class SDK {
+type Plugin = (config: Config) => Config;
+
+interface Db {
+  connect: () => void;
+  create: () => void;
+  find: () => void;
+  update: () => void;
+  delete: () => void;
+}
+
+export interface Config {
+  db: (config: { sdk: SDK }) => Db;
+  plugins: Plugin[];
+}
+
+export class SDK {
+  config: Config;
+  db: Db;
+  initialized: boolean;
+  logger: Logger;
+
   constructor() {
     this.initialized = false;
   }
 
-  async init(config) {
+  async init(config: Config) {
     this.config = config;
     this.logger = pino();
     this.db = await this.config.db({ sdk: this });

@@ -1,8 +1,14 @@
+import type { Config, SDK } from '../index';
+
 export class DatabaseAdapter {
+  config: Config;
+  schemas: Record<string, unknown>;
+  sdk: SDK;
+
   constructor({ config, sdk }) {
     this.config = config;
-    this.sdk = sdk;
     this.schemas = {};
+    this.sdk = sdk;
   }
 
   createContentTypeSchema(contentTypeName, schema) {
