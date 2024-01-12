@@ -35,4 +35,38 @@ describe('generateTypes', () => {
           "
         `);
   });
+
+  test('Generate types for required fields', async () => {
+    expect(
+      await generateTypes({
+        contentTypes: [
+          {
+            slug: 'test',
+            attributes: [
+              {
+                type: 'text',
+                name: 'test',
+                required: true,
+              },
+            ],
+          },
+        ],
+      }),
+    ).toMatchInlineSnapshot(`
+      "
+      export interface Config {
+        contentTypes: {
+          test: Test;
+        };
+      }
+      export interface Test {
+        test: string;
+      }
+
+      declare module 'sdk' {
+          export interface GeneratedTypes extends Config {}
+      }
+      "
+    `);
+  });
 });

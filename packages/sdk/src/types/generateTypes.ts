@@ -10,10 +10,11 @@ function convertAttributesToJsonSchemas(
     fieldType: JSONSchema4TypeName,
     isRequired: boolean,
   ): JSONSchema4TypeName | JSONSchema4TypeName[] {
-    const fieldTypes = [fieldType];
-    if (isRequired) return fieldType;
-    fieldTypes.push('null');
-    return fieldTypes;
+    if (isRequired) {
+      return fieldType;
+    }
+
+    return [fieldType, 'null'];
   }
 
   const required = [];
