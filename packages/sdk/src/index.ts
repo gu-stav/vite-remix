@@ -2,13 +2,12 @@ import pino from 'pino';
 import type { Logger } from 'pino';
 
 import { validate } from './config/validate';
+import type { Config } from './config/validate';
 import { find, login } from './contentTypes';
 import type { FindArg, LoginArg } from './contentTypes';
 import type { DatabaseAdapter } from './database';
 
 export * as errors from './errors';
-
-type Plugin = (config?: Config) => Config;
 
 interface Attribute {
   name: string;
@@ -30,12 +29,6 @@ export interface ContentType {
   };
   attributes: Attribute[];
   slug: string;
-}
-
-export interface Config {
-  contentTypes: ContentType[];
-  db?: (config: { sdk: SDK }) => Promise<DatabaseAdapter>;
-  plugins?: Plugin[];
 }
 
 export class SDK<TGeneratedTypes extends GeneratedTypes = GeneratedTypes> {

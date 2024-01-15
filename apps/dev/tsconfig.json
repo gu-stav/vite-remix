@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "jsx": "react",
+    "paths": {
+      "sdk/generated-types": ["./sdk-types.ts"]
+    },
+    "moduleResolution": "bundler"
+  },
+  "include": ["src/**/*.ts", "./sdk-types.ts"],
+  "exclude": ["node_modules", "dist"],
+}
