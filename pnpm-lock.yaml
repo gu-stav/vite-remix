@@ -41,6 +41,10 @@ importers:
       unding-studio-remix:
         specifier: workspace:*
         version: link:../../packages/studio
+    devDependencies:
+      typescript:
+        specifier: ^5.1.6
+        version: 5.3.3
 
   packages/database-postgres:
     dependencies:

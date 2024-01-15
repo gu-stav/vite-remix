@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "build": "studio build",
-    "dev": "studio dev"
+    "dev": "studio dev",
+    "types:generate": "studio types:generate ./sdk-types.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,8 @@
     "database-postgres": "workspace:^",
     "react": "^18.2.0",
     "unding-studio-remix": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
   }
 }

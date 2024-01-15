@@ -7,8 +7,12 @@
     "studio": "./src/cli.js"
   },
   "exports": {
+    "./types": {
+      "types": "./src/exports/types.ts"
+    },
+
     "./config": {
-      "import": "./src/exports/config.js"
+      "import": "./src/exports/config.ts"
     }
   },
   "scripts": {

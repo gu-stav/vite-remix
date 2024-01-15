@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
 import { defineConfig } from '../config/define';
-import { sdk } from '../index';
+import { sdk } from '..';
 
 const CONFIG_VALID = {
   contentTypes: [

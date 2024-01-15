@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
-    "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+    "rootDir": "." /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
     "outDir": "./dist" /* Redirect output structure to the directory. */,
     "paths": {},
     "types": ["node"],
@@ -10,13 +10,13 @@
   },
   "exclude": [
     "dist",
-    "test",
+    "__test",
     "node_modules",
-    "src/**/*.test.js",
-    "src/**/*.test.jsx",
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx"
+    "src/**/*.test.*"
   ],
   /* Like tsconfig.build.json, but includes test directory and doesnt emit anything */
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts", "src/**/*.json"]
+  "include": [
+    "src/**/*",
+    "vite.config.ts"
+  ]
 }

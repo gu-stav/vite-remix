@@ -1,7 +1,7 @@
 import { compile } from 'json-schema-to-typescript';
 import { JSONSchema4, JSONSchema4TypeName } from 'json-schema';
 
-import { Config } from '../index';
+import { Config } from '..';
 
 function convertAttributesToJsonSchemas(
   attributes: Config['contentTypes'][number]['attributes'],
@@ -17,14 +17,14 @@ function convertAttributesToJsonSchemas(
     return [fieldType, 'null'];
   }
 
-  const required = [];
+  const required: string[] = [];
   const properties = attributes.reduce((acc, attribute) => {
     let schema: JSONSchema4;
 
     switch (attribute.type) {
       case 'text':
         schema = {
-          type: withNullableJSONSchemaType('string', attribute.required),
+          type: withNullableJSONSchemaType('string', !!attribute.required),
         };
         break;
     }

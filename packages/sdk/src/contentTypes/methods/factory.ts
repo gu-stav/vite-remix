@@ -1,19 +1,17 @@
 import type { ZodSchema } from 'zod';
 
-import { ValidationError } from '../../errors';
+import { ValidationError } from '../../errors/index';
 
-import type { ContentType } from '../../index';
+import type { SDK } from '../..';
 
-export function factory(
-  callback: (callbackPayload: {
-    contentType: ContentType | undefined;
-    data: object;
-    request: unknown;
-    where: {};
-  }) => Promise<object>,
+export function factory<T extends unknown>(
+  callback: (sdk: SDK, callbackPayload: T) => Promise<any>,
   options: { schema: ZodSchema } = { schema: null },
 ) {
-  return async function (payload) {
+  return async function (
+    sdk: SDK,
+    payload: { contentType?: string; data: unknown },
+  ) {
     try {
       // validate data payload schema
       if (options?.schema && payload?.data) {
@@ -24,21 +22,31 @@ export function factory(
         }
       }
 
+      const contentType = payload?.contentType
+        ? sdk.config.contentTypes.find(
+            (contentType) => contentType.slug === payload.contentType,
+          )
+        : undefined;
+
+      // TODO
+      if (!contentType) {
+      }
+
       return {
-        data: await callback.bind(this)({
+        data: await callback(sdk, {
           ...payload,
 
           // populate the contentType
-          contentType: payload?.contentType
-            ? this.config.contentTypes.find(
-                (contentType) => contentType.slug === payload.contentType,
-              )
-            : undefined,
+          contentType,
         }),
       };
     } catch (error) {
-      this.logger.error(error.message);
+      sdk.logger.error(error.message);
       throw error;
     }
   };
+}
+
+export interface SdkResponse<T extends any> {
+  data: T;
 }

@@ -2,10 +2,11 @@ import pino from 'pino';
 import type { Logger } from 'pino';
 
 import { validate } from './config/validate';
-import { find, login } from './contentTypes/index';
-import type { DatabaseAdapter } from './database/index';
+import { find, login } from './contentTypes';
+import type { FindArg, LoginArg } from './contentTypes';
+import type { DatabaseAdapter } from './database';
 
-export * as errors from './errors/index';
+export * as errors from './errors';
 
 type Plugin = (config?: Config) => Config;
 
@@ -37,10 +38,13 @@ export interface Config {
   plugins?: Plugin[];
 }
 
-export class SDK {
+export class SDK<TGeneratedTypes extends GeneratedTypes = GeneratedTypes> {
+  // @ts-ignore
   config: Config;
+  // @ts-ignore
   db: DatabaseAdapter;
   initialized: boolean;
+  // @ts-ignore
   logger: Logger;
 
   constructor() {
@@ -70,34 +74,35 @@ export class SDK {
     this.initialized = true;
   }
 
-  async create({ contentType, data }) {
-    const doc = await this.db.create();
-    return doc;
+  async create() {
+    throw new Error('Not implemented');
   }
 
   async update() {
-    const doc = await this.db.update();
-    return doc;
+    throw new Error('Not implemented');
   }
 
-  async find(payload) {
-    return await find.bind(this)(payload);
+  async find<T extends keyof TGeneratedTypes['contentTypes']>(
+    payload: FindArg<T>,
+  ) {
+    return find(this, payload);
   }
 
   async findById() {
-    const doc = await this.db.find();
+    throw new Error('Not implemented');
   }
 
   async delete() {
-    const doc = await this.db.delete();
+    throw new Error('Not implemented');
   }
 
-  async login(payload) {
-    return await login.bind(this)(payload);
+  async login(payload: LoginArg) {
+    return login(this, payload);
   }
 }
 
-export const sdk = new SDK();
-export * from './database/index';
+export const sdk = new SDK<GeneratedTypes>();
+
+export * from './database';
 export { defineConfig } from './config/define';
 export { generateTypes } from './types/generateTypes';
