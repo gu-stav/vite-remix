@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 import { factory } from './factory';
-import type { SdkResponse } from './factory';
 import type { SDK } from '../..';
 
 const schema = z

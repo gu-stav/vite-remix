@@ -1,4 +1,5 @@
-import type { Config, SDK } from '..';
+import type { SDK } from '..';
+import type { Config } from '../config/validate';
 
 export class DatabaseAdapter {
   config: Config;

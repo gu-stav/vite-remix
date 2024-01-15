@@ -5,13 +5,13 @@ import { ValidationError } from '../../errors/index';
 import type { SDK } from '../..';
 
 export function factory(
-  callback: (sdk: SDK, callbackPayload: unknown) => Promise<any>,
+  callback: (sdk: SDK, callbackArg: any) => Promise<any>,
   options: { schema?: ZodSchema } = {},
 ) {
   return async function (
     sdk: SDK,
-    payload: { contentType?: string; data: unknown },
-  ) {
+    payload: { contentType?: string; data: any },
+  ): Promise<any> {
     try {
       // validate data payload schema
       if (options?.schema && payload?.data) {
@@ -19,6 +19,7 @@ export function factory(
           options.schema.parse(payload.data);
         } catch (error) {
           if (error instanceof ZodError) {
+            // @ts-expect-error
             throw new ValidationError('', error.format());
           }
         }

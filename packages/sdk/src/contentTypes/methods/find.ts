@@ -1,15 +1,12 @@
 import type { SDK } from '../..';
-import { executeAccessControl } from '../../auth/executeAccessControl';
-import { SdkResponse, factory } from './factory';
+import { factory } from './factory';
+import type { Config } from '../../config/validate';
 
 export const find = factory(async function (
   sdk: SDK,
-  payload: FindArg,
-): Promise<SdkResponse<{}>> {
-  await executeAccessControl(contentType.access?.find);
-
-  // @ts-expect-error
-  return sdk.db.find();
+  payload: FindArg<Config['contentTypes'][number]>,
+): Promise<{}> {
+  return {};
 });
 
 export interface FindArg<T extends unknown> {

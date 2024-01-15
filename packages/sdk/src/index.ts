@@ -47,12 +47,16 @@ export class SDK<TGeneratedTypes extends GeneratedTypes = GeneratedTypes> {
   async init(config: Config) {
     this.config = config;
     this.logger = pino();
+
+    // @ts-expect-error
     this.db = await this.config.db({ sdk: this });
 
     // initialize plugins
     if (this.config.plugins) {
+      // @ts-expect-error
       this.config = this.config.plugins.reduce(
-        (acc, plugin): Config['plugins'][number] => plugin(acc),
+        // @ts-expect-error
+        (acc, plugin) => plugin(acc),
         this.config,
       );
     }
@@ -78,6 +82,7 @@ export class SDK<TGeneratedTypes extends GeneratedTypes = GeneratedTypes> {
   async find<T extends keyof TGeneratedTypes['contentTypes']>(
     payload: FindArg<T>,
   ) {
+    // @ts-expect-error
     return find(this, payload);
   }
 
