@@ -2,7 +2,7 @@ import { ForbiddenError } from '../errors';
 
 export async function executeAccessControl(
   callback: ({ request }: { request: Request }) => boolean,
-  options: { request: Request },
+  options?: {},
 ) {
   const hasAccess = await callback({ request: options.request });
 

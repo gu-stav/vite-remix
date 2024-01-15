@@ -12,6 +12,7 @@ const fieldSchema = z.object({
   name: z.string().refine((val) => !val.startsWith('_'), {
     message: 'Field name can not start with underscores',
   }),
+  required: z.boolean(),
   type: z.enum(['text', 'date', 'password']),
   validate: z.optional(z.function()),
 });

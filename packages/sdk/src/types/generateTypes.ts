@@ -1,7 +1,7 @@
 import { compile } from 'json-schema-to-typescript';
 import { JSONSchema4, JSONSchema4TypeName } from 'json-schema';
 
-import { Config } from '..';
+import { Config } from '../config/validate';
 
 function convertAttributesToJsonSchemas(
   attributes: Config['contentTypes'][number]['attributes'],
@@ -18,25 +18,32 @@ function convertAttributesToJsonSchemas(
   }
 
   const required: string[] = [];
-  const properties = attributes.reduce((acc, attribute) => {
-    let schema: JSONSchema4;
+  const properties = attributes.reduce(
+    (
+      acc: Record<string, JSONSchema4>,
+      attribute: Config['contentTypes'][number]['attributes'][number],
+    ) => {
+      let schema: JSONSchema4;
 
-    switch (attribute.type) {
-      case 'text':
-        schema = {
-          type: withNullableJSONSchemaType('string', !!attribute.required),
-        };
-        break;
-    }
+      switch (attribute.type) {
+        // type=text
+        default:
+          schema = {
+            type: withNullableJSONSchemaType('string', !!attribute.required),
+          };
+          break;
+      }
 
-    acc[attribute.name] = schema;
+      acc[attribute.name] = schema;
 
-    if (attribute.required === true) {
-      required.push(attribute.name);
-    }
+      if (attribute.required === true) {
+        required.push(attribute.name);
+      }
 
-    return acc;
-  }, {});
+      return acc;
+    },
+    {},
+  );
 
   return {
     properties,
@@ -47,27 +54,39 @@ function convertAttributesToJsonSchemas(
 function convertContentTypesToJsonSchemas(
   contentTypes: Config['contentTypes'],
 ): { [k: string]: JSONSchema4 } {
-  return contentTypes.reduce((acc, contentType) => {
-    acc[contentType.slug] = {
-      additionalProperties: false,
-      title: contentType.slug,
-      type: 'object',
-      ...convertAttributesToJsonSchemas(contentType.attributes),
-    };
-    return acc;
-  }, {});
+  return contentTypes.reduce(
+    (
+      acc: Record<string, JSONSchema4>,
+      contentType: Config['contentTypes'][number],
+    ) => {
+      acc[contentType.slug] = {
+        additionalProperties: false,
+        title: contentType.slug,
+        type: 'object',
+        ...convertAttributesToJsonSchemas(contentType.attributes),
+      };
+      return acc;
+    },
+    {},
+  );
 }
 
 function convertContentTypesSchemaReferences(
   contentTypes: Config['contentTypes'],
 ): JSONSchema4 {
-  const properties = contentTypes.reduce((acc, contentType) => {
-    acc[contentType.slug] = {
-      $ref: `#/definitions/${contentType.slug}`,
-    };
+  const properties = contentTypes.reduce(
+    (
+      acc: Record<string, JSONSchema4>,
+      contentType: Config['contentTypes'][number],
+    ) => {
+      acc[contentType.slug] = {
+        $ref: `#/definitions/${contentType.slug}`,
+      };
 
-    return acc;
-  }, {});
+      return acc;
+    },
+    {},
+  );
 
   return {
     additionalProperties: false,

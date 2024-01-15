@@ -52,7 +52,7 @@ export class SDK<TGeneratedTypes extends GeneratedTypes = GeneratedTypes> {
     // initialize plugins
     if (this.config.plugins) {
       this.config = this.config.plugins.reduce(
-        (acc, plugin) => plugin(acc),
+        (acc, plugin): Config['plugins'][number] => plugin(acc),
         this.config,
       );
     }

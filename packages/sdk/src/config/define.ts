@@ -1,10 +1,6 @@
-import type { Config } from '..';
+import type { Config } from './validate';
 
-export function defineConfig(config: Config = { contentTypes: [], db: null }) {
-  if (!config?.contentTypes) {
-    config.contentTypes = [];
-  }
-
+export function defineConfig(config: Config) {
   if (!config?.plugins) {
     config.plugins = [];
   }

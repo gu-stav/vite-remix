@@ -1,12 +1,12 @@
-import type { ZodSchema } from 'zod';
+import { ZodError, ZodSchema } from 'zod';
 
 import { ValidationError } from '../../errors/index';
 
 import type { SDK } from '../..';
 
-export function factory<T extends unknown>(
-  callback: (sdk: SDK, callbackPayload: T) => Promise<any>,
-  options: { schema: ZodSchema } = { schema: null },
+export function factory(
+  callback: (sdk: SDK, callbackPayload: unknown) => Promise<any>,
+  options: { schema?: ZodSchema } = {},
 ) {
   return async function (
     sdk: SDK,
@@ -18,7 +18,9 @@ export function factory<T extends unknown>(
         try {
           options.schema.parse(payload.data);
         } catch (error) {
-          throw new ValidationError('', error.format());
+          if (error instanceof ZodError) {
+            throw new ValidationError('', error.format());
+          }
         }
       }
 
@@ -35,14 +37,15 @@ export function factory<T extends unknown>(
       return {
         data: await callback(sdk, {
           ...payload,
-
           // populate the contentType
           contentType,
         }),
       };
     } catch (error) {
-      sdk.logger.error(error.message);
-      throw error;
+      if (error instanceof Error) {
+        sdk.logger.error(error.message);
+        throw error;
+      }
     }
   };
 }

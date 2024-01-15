@@ -12,10 +12,7 @@ const schema = z
   .strict();
 
 export const login = factory(
-  async function (
-    sdk: SDK,
-    payload: LoginArg,
-  ): Promise<SdkResponse<{ token: string }>> {
+  async function (sdk: SDK, payload: LoginArg): Promise<{ token: string }> {
     return {
       token: 'something',
     };

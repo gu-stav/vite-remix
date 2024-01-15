@@ -10,7 +10,6 @@
     "./types": {
       "types": "./src/exports/types.ts"
     },
-
     "./config": {
       "import": "./src/exports/config.ts"
     }

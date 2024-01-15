@@ -5,7 +5,11 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "types": "./dist/index.js"
+      "types": "./dist/index.d.ts"
+    },
+    "./config": {
+      "import": "./dist/config.js",
+      "types": "./dist/config/config.d.ts"
     }
   },
   "type": "module",
