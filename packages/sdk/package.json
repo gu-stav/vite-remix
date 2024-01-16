@@ -5,6 +5,9 @@
   "files": [
     "./dist"
   ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -18,8 +21,8 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },
@@ -30,6 +33,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "tsup": "^8.0.1",
     "typescript": "^5.1.6",
     "vitest": "^1.1.3"
   }
