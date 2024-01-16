@@ -65,6 +65,16 @@ importers:
         specifier: workspace:^
         version: link:../sdk
 
+  packages/logger-pino:
+    dependencies:
+      pino:
+        specifier: ^8.17.2
+        version: 8.17.2
+    devDependencies:
+      sdk:
+        specifier: workspace:^
+        version: link:../sdk
+
   packages/sdk:
     dependencies:
       json-schema:
@@ -73,9 +83,6 @@ importers:
       json-schema-to-typescript:
         specifier: ^13.1.1
         version: 13.1.1
-      pino:
-        specifier: ^8.17.2
-        version: 8.17.2
       zod:
         specifier: ^3.22.4
         version: 3.22.4

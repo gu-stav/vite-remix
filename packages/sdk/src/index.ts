@@ -1,6 +1,3 @@
-import pino from 'pino';
-import type { Logger } from 'pino';
-
 import { validate } from './config/validate';
 import type { Config } from './config/validate';
 import { find, login } from './contentTypes';
@@ -38,7 +35,7 @@ export class SDK<TGeneratedTypes extends GeneratedTypes = GeneratedTypes> {
   db: DatabaseAdapter;
   initialized: boolean;
   // @ts-ignore
-  logger: Logger;
+  logger: any;
 
   constructor() {
     this.initialized = false;
@@ -46,7 +43,7 @@ export class SDK<TGeneratedTypes extends GeneratedTypes = GeneratedTypes> {
 
   async init(config: Config) {
     this.config = config;
-    this.logger = pino();
+    this.logger = this.config.logger({ sdk: this });
 
     // @ts-expect-error
     this.db = await this.config.db({ sdk: this });

@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "noEmit": false,
+    "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+    "outDir": "./dist" /* Redirect output structure to the directory. */,
+    "paths": {},
+    "types": ["node"],
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "exclude": ["dist", "__test", "node_modules", "src/**/*.test.*"],
+  /* Like tsconfig.build.json, but includes test directory and doesnt emit anything */
+  "include": ["src/**/*"]
+}

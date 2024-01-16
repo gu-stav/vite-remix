@@ -31,6 +31,7 @@ const schema = z
   .object({
     contentTypes: z.array(contentTypeSchema).nonempty(),
     db: z.function(),
+    logger: z.function().returns(z.function().args(z.object({ sdk: z.any() }))),
     plugins: z.optional(z.array(z.function())),
     secret: z.string().min(1),
   })
