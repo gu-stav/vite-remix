@@ -7,27 +7,11 @@ import { logger } from './logger';
 
 export * as errors from './errors';
 
-interface Attribute {
-  name: string;
-  required?: boolean;
-  type: 'text';
-}
-
 export type GeneratedTypes = {
   contentTypes: {
     [slug: string]: Record<string, unknown>;
   };
 };
-
-export interface ContentType {
-  access?: {
-    create?: () => boolean;
-    delete?: () => boolean;
-    find?: () => boolean;
-  };
-  attributes: Attribute[];
-  slug: string;
-}
 
 export class SDK<TGeneratedTypes extends GeneratedTypes = GeneratedTypes> {
   // @ts-ignore
