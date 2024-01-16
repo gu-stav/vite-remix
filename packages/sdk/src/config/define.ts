@@ -5,7 +5,7 @@ export function defineConfig(config: Config) {
     config.plugins = [];
   }
 
-  config.contentTypes.forEach((contentType) => {
+  (config?.contentTypes ?? []).forEach((contentType) => {
     if (!contentType.access) {
       contentType.access = {};
     }

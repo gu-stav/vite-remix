@@ -32,22 +32,23 @@ const CONFIG_VALID = {
 
 describe('sdk', () => {
   test('invalid config (empty)', async () => {
-    await expect(sdk.init(defineConfig())).rejects.toThrow();
+    await expect(sdk.init(defineConfig({}))).rejects.toThrow();
   });
 
   test('user defined content-type slugs can not start with an underscore', async () => {
     await expect(
       sdk.init(
-        // @ts-expect-error
         defineConfig({
           ...CONFIG_VALID,
           contentTypes: [
+            // @ts-expect-error
             ...CONFIG_VALID.contentTypes,
             {
               slug: '_test',
               attributes: [
                 {
                   name: 'test',
+                  required: false,
                   type: 'text',
                 },
               ],
