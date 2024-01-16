@@ -4,12 +4,12 @@
   "description": "",
   "exports": {
     ".": {
-      "import": "./dist/src/index.js",
-      "types": "./dist/src/index.d.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./config": {
-      "import": "./dist/src/config.js",
-      "types": "./dist/src/config/validate.d.ts"
+      "import": "./dist/config.js",
+      "types": "./dist/config/validate.d.ts"
     }
   },
   "type": "module",

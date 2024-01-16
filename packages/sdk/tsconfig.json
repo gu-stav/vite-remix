@@ -3,7 +3,7 @@
   "compilerOptions": {
     "declaration": true,
     "noEmit": false,
-    "rootDir": "." /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+    "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
     "outDir": "./dist" /* Redirect output structure to the directory. */,
     "paths": {
       "payload/generated-types": ["./src/sdk-types.ts"]
@@ -13,5 +13,5 @@
   },
   "exclude": ["dist", "__test", "node_modules", "src/**/*.test.*"],
   /* Like tsconfig.build.json, but includes test directory and doesnt emit anything */
-  "include": ["src/**/*", "vite.config.ts"]
+  "include": ["src/**/*"]
 }
