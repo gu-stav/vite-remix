@@ -3,6 +3,7 @@ import type { Config } from './config/validate';
 import { find, login } from './contentTypes';
 import type { FindArg, LoginArg } from './contentTypes';
 import type { DatabaseAdapter } from './database';
+import { logger } from './logger';
 
 export * as errors from './errors';
 
@@ -43,7 +44,7 @@ export class SDK<TGeneratedTypes extends GeneratedTypes = GeneratedTypes> {
 
   async init(config: Config) {
     this.config = config;
-    this.logger = this.config.logger({ sdk: this });
+    this.logger = this.config?.logger ?? logger();
 
     // @ts-expect-error
     this.db = await this.config.db({ sdk: this });

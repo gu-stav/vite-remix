@@ -1,5 +1,9 @@
 {
-  "include": ["packages/*/src/**/*", "apps/**/*", "packages/logger-pino/tsconfig.json"],
+  "include": [
+    "packages/*/src/**/*",
+    "apps/**/*",
+    "packages/logger-pino/tsconfig.json"
+  ],
   "exclude": [],
   "compilerOptions": {
     "target": "ES2020",
